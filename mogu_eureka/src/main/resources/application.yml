@@ -5,8 +5,8 @@ security:
   basic:
     enabled: true
   user:
-    name: user
-    password: password123
+    name: mogu
+    password: mogu
 
 spring:
   jmx:
@@ -17,4 +17,4 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://user:password123@localhost:8761/eureka
+      defaultZone: http://mogu:mogu@localhost:8761/eureka
