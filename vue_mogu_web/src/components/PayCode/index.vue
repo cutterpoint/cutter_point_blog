@@ -5,7 +5,6 @@
       <span v-if="praiseCount!=0">
         (<b id="diggnum">{{praiseCount}}</b>)
       </span>
-      
     </p>
     <p class="dasbox">
       <a href="javascript:void(0)" @click="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a>
@@ -49,7 +48,7 @@
 </template>
 
 <script>
-import { getWebConfig } from "../../api/index";
+import { getWebConfig } from "../../api/index"
 import {
   praiseBlogByUid,
   getBlogPraiseCountByUid
@@ -112,7 +111,7 @@ export default {
       var params = new URLSearchParams();
       params.append("uid", uid);
       getBlogPraiseCountByUid(params).then(response => {
-        if (response.code == "success") {
+        if (response.code == 'success') {
           this.praiseCount = response.data;
         }
       });

@@ -22,11 +22,17 @@ module.exports = {
   // add your custom rules here
   rules: {
     // allow async-await
-    'generator-star-spacing': 'off',
+    "generator-star-spacing": "off",
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "indent": 2,
-    'indent': [2, 2, {"SwitchCase": 1}],
-    "indent": [1, 2]
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "indent": 0,
+    "indent": [0, 0, {"SwitchCase": 0}],
+    "indent": [0, 0],
+    "semi": ["error", "always"],
+    //空格
+    "no-tabs": "off",
+    "no-trailing-spaces": 0,//一行结束后面不要有空格
+    "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
+    "quote-props":[0, "always"]//对象字面量中的属性名是否强制双引号
   }
 }

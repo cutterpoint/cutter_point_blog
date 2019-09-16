@@ -10,7 +10,7 @@
         <li v-for="(item, index) in fourthData" v-if="index != 0" :key="item.uid">
           <i><img style="cursor:pointer" v-if="item.photoList" @click="goToInfo(fourthData[0].uid)" :src="item.photoList[0]"></i>
           <p><a href="javascript:void(0);" @click="goToInfo(item.uid)">{{item.title}}</a></p>
-          <span>{{item.createTime}}</span> 
+          <span>{{item.createTime}}</span>
         </li>
       </ul>
     </div>
