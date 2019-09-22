@@ -1,0 +1,33 @@
+#springcloud配置
+#配置工程监听端口8888，默认情况下client通过读取http://localhost:8888获取配置信息
+server:
+  port: 8761
+  servlet:
+    context-path: /cutter-point-eureka
+#  servlet-path: /cutter-point-springcloud
+
+spring:
+  application:
+    name: cutter-point-eureka
+  jmx:
+    default-domain: cutter-point-eureka
+
+#defaultZone表示向自身注册，例子中有三个server节点构成集群，其余两个两个节点也向该端口注册
+#instanceId 表示eureka instance 标识，需要唯一，如果不配置，多个节点最终只会有一个生效
+eureka:
+  client:
+    service-url:
+      #多个地址可使用 , 分隔
+      defaultZone: http://127.0.0.1:8761/eureka/
+    #    禁止自己向自己注册
+    register-with-eureka: false #这个是是否把自己作为客户端注册进入
+    fetch-registry: false #从Eureka Server获取注册信息
+  instance:
+    #    metadataMap:
+    #    metadata-map:
+    #      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    #    status-page-url-path: ${management.server.servlet.context-path}/info
+    #    health-check-url-path: ${management.server.servlet.context-path}/health
+    #vcap.application.instance_id 是springboot 自动产生的
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+

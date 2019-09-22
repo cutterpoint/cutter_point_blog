@@ -202,6 +202,7 @@ export default {
     // });
   },
   created() {
+    debugger;
     var secondParams = new URLSearchParams();
     secondParams.append("level", 2);
     getBlogByLevel(secondParams).then(response => {

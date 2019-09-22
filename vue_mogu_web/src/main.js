@@ -9,7 +9,6 @@ import $ from 'jquery'
 import easyfader from '../static/js/jquery.easyfader.min.js'
 import scrollReveal from '../static/js/scrollReveal.js'
 import common from '../static/js/common.js'
-// import nav from '../static/js/nav.js'
 
 Vue.config.productionTip = false
 

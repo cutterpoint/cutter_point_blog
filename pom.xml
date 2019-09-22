@@ -6,12 +6,19 @@
 		<version>1.4.0.RELEASE</version>
 	</parent>
 
+	<!--<modelVersion>4.0.0</modelVersion>-->
+	<!--<groupId>com.moxi</groupId>-->
+	<!--<artifactId>mogu_blog</artifactId>-->
+	<!--<version>0.0.1-SNAPSHOT</version>-->
+	<!--<packaging>pom</packaging>-->
+	<!--<name>mogu_blog</name>-->
+	<!--<description>a blog web</description>-->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.moxi</groupId>
-	<artifactId>mogu_blog</artifactId>
+	<groupId>cutter.point</groupId>
+	<artifactId>blog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>mogu_blog</name>
+	<name>blog</name>
 	<description>a blog web</description>
   
    	<properties>
@@ -44,8 +51,9 @@
   	<module>mogu_admin</module>
   	<module>mogu_web</module>
   	<module>mogu_picture</module>
-	<module>mogu_eureka</module>
+	<module>cutter_point_eureka</module>
 	<module>mogu_sms</module>
+	<module>cutter_point_zuul</module>
   </modules>
   
 	<dependencyManagement>
