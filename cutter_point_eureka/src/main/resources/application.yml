@@ -1,24 +1,17 @@
 server:
   port: 8761
 
-security:
-  basic:
-    enabled: true
-  user:
-    name: mogu
-    password: mogu
-
 spring:
   jmx:
-    default-domain: mogu_eureka
+    default-domain: cutter-point-eureka
   profiles:
     active: dev
 
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-#      defaultZone: http://mogu:mogu@localhost:8761/eureka
-       defaultZone: http://mogu:mogu@localhost:8761/eureka
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+##      defaultZone: http://mogu:mogu@localhost:8761/eureka
+#       defaultZone: http://mogu:mogu@localhost:8761/eureka
 

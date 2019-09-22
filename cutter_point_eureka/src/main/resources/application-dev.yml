@@ -18,9 +18,9 @@ eureka:
   client:
     service-url:
       #多个地址可使用 , 分隔
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka
     #    禁止自己向自己注册
-    register-with-eureka: false #这个是是否把自己作为客户端注册进入
+    register-with-eureka: true #这个是是否把自己作为客户端注册进入
     fetch-registry: false #从Eureka Server获取注册信息
   instance:
     #    metadataMap:
@@ -29,5 +29,6 @@ eureka:
     #    status-page-url-path: ${management.server.servlet.context-path}/info
     #    health-check-url-path: ${management.server.servlet.context-path}/health
     #vcap.application.instance_id 是springboot 自动产生的
-    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    instance-id: cutter-point-eureka
+
 
