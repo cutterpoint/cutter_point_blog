@@ -1,0 +1,32 @@
+server:
+  port: 9527
+  servlet:
+    context-path: /
+
+spring:
+  jmx:
+    default-domain: cutter_point_zuul
+  application:
+    name: cutter-point-zuul
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true #从Eureka Server获取注册信息
+    service-url:
+      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
+  instance:
+    appname: cutter-point-zuul
+
+#设置zuul请求路由，所有service1的请求进入cutter-point-service1，2的进入cutter-point-http
+zuul:
+  routes:
+    cutter-point-monitor:
+      stripPrefix: false
+      path: /cutter-point-monitor/**
+      serviceId: cutter-point-monitor
+    #直接转发ip请求
+    users:
+      path: /**
+      url: http://127.0.0.1:9526/#/
+

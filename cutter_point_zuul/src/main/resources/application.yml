@@ -27,6 +27,6 @@ zuul:
       serviceId: cutter-point-monitor
     #直接转发ip请求
     users:
-      path: /
+      path: /**
       url: http://127.0.0.1:9526/#/
 

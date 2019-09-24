@@ -75,7 +75,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>cutter_point_eureka</finalName>
+                    <finalName>cutter-point-eureka</finalName>
                 </configuration>
             </plugin>
         </plugins>

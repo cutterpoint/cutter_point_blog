@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>cutter.point</groupId>
+		<artifactId>blog</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+    <modelVersion>4.0.0</modelVersion>
+
+	<artifactId>cutter_point_blog_xo</artifactId>
+	
+	<properties>		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <mybatis-plus-boot-starter.version>3.0-RC1</mybatis-plus-boot-starter.version>
+        <HikariCP.version>3.2.0</HikariCP.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+		    <artifactId>cutter_point_blog_base</artifactId>
+		    <groupId>cutter.point</groupId>
+		    <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+	</dependencies>
+	
+ 	<!-- Package as an executable jar -->
+    <build>
+    	<finalName>cutter_point_blog_xo</finalName>
+		  <resources>
+		   <resource>
+		       <directory>src/main/java</directory>
+		       <includes>
+		           <include>**/*.xml</include>
+		       </includes>
+		   </resource>
+		   <resource>
+		       <directory>src/main/resources</directory>
+		       <includes>
+		           <include>**.*</include>
+		           <include>**/*.*</include><!-- i18n能读取到 -->
+		            <include>**/*/*.*</include>
+		       </includes>
+		   </resource>
+		 </resources>
+    </build>
+	
+</project>
