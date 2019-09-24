@@ -4,10 +4,10 @@ server:
 
 #阿里大于
 templateCode: SMS_XXXXXX #短信模板编号
-signName: 蘑菇博客
+signName: cutter_point博客
 
 moguBlog:
-   email: mogublog@163.com
+   email: xiaofengbly@163.com
     
 #Data image url
 data:
@@ -15,7 +15,8 @@ data:
     url: http://localhost:8600/
 file:
   upload:
-    path: D:/mogu_blog/data/
+    #H:\6-ideaworkspace\github\mogu_blog_v2
+    path: H:/6-ideaworkspace/1-tmp/data/
 
 #博客相关配置
 BLOG:
@@ -31,11 +32,11 @@ BLOG:
 #spring
 spring:
   jmx:
-    default-domain: mogu_web
+    default-domain: cutter_point_blog_web
   thymeleaf:
     cache: true   #关闭缓存
   application:
-    name: mogu-web
+    name: cutter-point-blog-web
   # DATABASE CONFIG
   datasource:
     username: mogu
@@ -90,7 +91,7 @@ eureka:
     healthcheck:
       enabled: true
     serviceUrl:
-      defaultZone: http://mogu:mogu@localhost:8761/eureka
+      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
@@ -106,7 +107,7 @@ feign.hystrix.enabled: false ## 索性禁用feign的hystrix支持
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.moxi.mogublog.xo.entity
+  typeAliasesPackage: com.cutter.point.blog.xo.entity
   global-config:
     # 数据库相关配置
     db-config:

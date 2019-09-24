@@ -1,4 +1,4 @@
-package com.moxi.mogublog.web.config;
+package com.cutter.point.blog.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

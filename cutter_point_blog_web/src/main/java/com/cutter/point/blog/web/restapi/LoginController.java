@@ -1,4 +1,4 @@
-package com.moxi.mogublog.web.restapi;
+package com.cutter.point.blog.web.restapi;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
-import com.moxi.mogublog.web.bean.User;
-import com.moxi.mogublog.web.bean.UserInfo;
+import com.cutter.point.blog.web.bean.User;
+import com.cutter.point.blog.web.bean.UserInfo;
 
 
 @Controller

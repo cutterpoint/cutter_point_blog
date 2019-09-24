@@ -1,4 +1,4 @@
-package com.moxi.mogublog.web.restapi;
+package com.cutter.point.blog.web.restapi;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,8 +15,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.moxi.mogublog.utils.CheckUtils;
 import com.moxi.mogublog.utils.ResultUtil;
 import com.moxi.mogublog.utils.StringUtils;
-import com.moxi.mogublog.web.global.SQLConf;
-import com.moxi.mogublog.web.global.SysConf;
+import com.cutter.point.blog.web.global.SQLConf;
+import com.cutter.point.blog.web.global.SysConf;
 import com.moxi.mogublog.xo.entity.User;
 import com.moxi.mogublog.xo.service.UserService;
 

@@ -1,71 +1,72 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
 
-	<!--<modelVersion>4.0.0</modelVersion>-->
-	<!--<groupId>com.moxi</groupId>-->
-	<!--<artifactId>mogu_blog</artifactId>-->
-	<!--<version>0.0.1-SNAPSHOT</version>-->
-	<!--<packaging>pom</packaging>-->
-	<!--<name>mogu_blog</name>-->
-	<!--<description>a blog web</description>-->
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>cutter.point</groupId>
-	<artifactId>blog</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>blog</name>
-	<description>a blog web</description>
-  
-   	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<swagger.version>2.6.1</swagger.version>
-		<swagger.ui.version>2.6.1</swagger.ui.version>
-		<servlet.api.version>3.0-alpha-1</servlet.api.version>
-		<net.sf.json.lib.version>2.4</net.sf.json.lib.version>
-		<alibaba.fastjson.version>1.2.31</alibaba.fastjson.version>
-		<jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>
-		<javax.mail.version>1.4</javax.mail.version>
-		<aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>
-		<aliyun.java.sdk.core.version>3.2.5</aliyun.java.sdk.core.version>
-		<mybatis.plus.boot.starter.version>3.1.2</mybatis.plus.boot.starter.version>
-		<jjwt.version>0.7.0</jjwt.version>
-		<druid.version>1.1.8</druid.version>
-		<google.code.gson.version>2.7</google.code.gson.version>
-		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
- 	</properties>
- 
+    <!--<modelVersion>4.0.0</modelVersion>-->
+    <!--<groupId>com.moxi</groupId>-->
+    <!--<artifactId>mogu_blog</artifactId>-->
+    <!--<version>0.0.1-SNAPSHOT</version>-->
+    <!--<packaging>pom</packaging>-->
+    <!--<name>mogu_blog</name>-->
+    <!--<description>a blog web</description>-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cutter.point</groupId>
+    <artifactId>blog</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>blog</name>
+    <description>a blog web</description>
 
- 
-  <modules>
-  	<module>mogu_utils</module>
-  	<module>mogu_base</module>
-  	<module>mogu_xo</module>
-  	<module>mogu_admin</module>
-  	<module>mogu_web</module>
-  	<module>mogu_picture</module>
-	<module>cutter_point_eureka</module>
-	<module>mogu_sms</module>
-	<module>cutter_point_zuul</module>
-  </modules>
-  
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <swagger.version>2.6.1</swagger.version>
+        <swagger.ui.version>2.6.1</swagger.ui.version>
+        <servlet.api.version>3.0-alpha-1</servlet.api.version>
+        <net.sf.json.lib.version>2.4</net.sf.json.lib.version>
+        <alibaba.fastjson.version>1.2.31</alibaba.fastjson.version>
+        <jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>
+        <javax.mail.version>1.4</javax.mail.version>
+        <aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>
+        <aliyun.java.sdk.core.version>3.2.5</aliyun.java.sdk.core.version>
+        <mybatis.plus.boot.starter.version>3.1.2</mybatis.plus.boot.starter.version>
+        <jjwt.version>0.7.0</jjwt.version>
+        <druid.version>1.1.8</druid.version>
+        <google.code.gson.version>2.7</google.code.gson.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    </properties>
+
+
+    <modules>
+        <module>cutter_point_blog_utils</module>
+        <module>cutter_point_blog_base</module>
+        <module>cutter_point_blog_xo</module>
+        <!--<module>mogu_admin</module>-->
+        <module>cutter_point_blog_web</module>
+        <!--<module>mogu_picture</module>-->
+        <module>cutter_point_eureka</module>
+        <!--<module>mogu_sms</module>-->
+        <module>cutter_point_zuul</module>
+        <module>cutter_point_blog_config</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

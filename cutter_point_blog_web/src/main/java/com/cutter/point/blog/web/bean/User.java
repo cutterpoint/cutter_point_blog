@@ -1,4 +1,4 @@
-package com.moxi.mogublog.web.bean;
+package com.cutter.point.blog.web.bean;
 
 import java.io.Serializable;
 
