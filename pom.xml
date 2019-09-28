@@ -41,6 +41,8 @@
         <druid.version>1.1.8</druid.version>
         <google.code.gson.version>2.7</google.code.gson.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <redis.clients.version>2.9.0</redis.clients.version>
     </properties>
 
 
@@ -66,7 +68,30 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${redis.clients.version}</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

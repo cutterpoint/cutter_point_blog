@@ -32,17 +32,17 @@ BLOG:
 #spring
 spring:
   jmx:
-    default-domain: cutter_point_blog_web
+    default-domain: cutter-point-blog-web
   thymeleaf:
     cache: true   #关闭缓存
   application:
     name: cutter-point-blog-web
   # DATABASE CONFIG
   datasource:
-    username: mogu
-    password: mogu
+    username: cutter_point
+    password: cutter_point
     #?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false
-    url: jdbc:mysql://127.0.0.1:3306/mogu_blog?useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/cutter_point?useSSL=false
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -72,18 +72,19 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     
   #Solr配置信息
-  data:
-    solr:
-      host: http://localhost:8080/solr
-      core: collection1
-      repositories:
-        enabled: true
+#  data:
+#    solr:
+#      host: http://localhost:8080/solr
+#      core: collection1
+#      repositories:
+#        enabled: true
   
   #redis
   redis:
     host: 127.0.0.1 #redis的主机ip
-    port: 6379
+    port: 17399
     database: 15
+    password: ZTE$soft987
 
 #eureka相关配置
 eureka:

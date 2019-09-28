@@ -27,10 +27,10 @@ import com.moxi.mogublog.utils.WebUtils;
 import com.cutter.point.blog.web.feign.PictureFeignClient;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
-import com.moxi.mogublog.xo.entity.ResourceSort;
-import com.moxi.mogublog.xo.entity.StudyVideo;
-import com.moxi.mogublog.xo.service.ResourceSortService;
-import com.moxi.mogublog.xo.service.StudyVideoService;
+import com.cutter.point.blog.xo.entity.ResourceSort;
+import com.cutter.point.blog.xo.entity.StudyVideo;
+import com.cutter.point.blog.xo.service.ResourceSortService;
+import com.cutter.point.blog.xo.service.StudyVideoService;
 import com.moxi.mougblog.base.enums.EStatus;
 
 import io.swagger.annotations.Api;

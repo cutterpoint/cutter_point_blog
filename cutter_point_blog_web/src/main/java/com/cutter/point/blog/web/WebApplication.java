@@ -2,9 +2,8 @@ package com.cutter.point.blog.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -17,15 +16,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableScheduling
 @EnableTransactionManagement
-@SpringBootApplication(exclude = VelocityAutoConfiguration.class)//redis和velocity的包会起冲突
+//@SpringBootApplication(exclude = VelocityAutoConfiguration.class)//redis和velocity的包会起冲突
+@SpringBootApplication
 @EnableSwagger2
 @EnableEurekaClient
-@EnableFeignClients("com.moxi.mogublog.web.feign")
+@EnableFeignClients("com.cutter.point.blog.web.feign")
 @ComponentScan(basePackages = {
-        "com.moxi.mogublog.config",
-        "com.moxi.mogublog.web.config",
-        "com.moxi.mogublog.web.restapi",
-        "com.moxi.mogublog.xo.service"})
+        "com.cutter.point.blog.config",
+        "com.cutter.point.blog.web.config",
+        "com.cutter.point.blog.web.restapi",
+        "com.cutter.point.blog.xo.service"})
 public class WebApplication {
 
     public static void main(String[] args){
@@ -41,13 +41,13 @@ public class WebApplication {
     }  
       
     /** 
-     * 跨域过滤器 
+     * 跨域过滤器,采用ZUUL进行过滤
      * @return 
      */
-    @Bean  
-    public CorsFilter corsFilter() {  
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();  
-        source.registerCorsConfiguration("/**", buildConfig()); // 4  
-        return new CorsFilter(source);  
-    } 
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", buildConfig()); // 4
+//        return new CorsFilter(source);
+//    }
 }

@@ -17,8 +17,8 @@ import com.moxi.mogublog.utils.ResultUtil;
 import com.moxi.mogublog.utils.StringUtils;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
-import com.moxi.mogublog.xo.entity.User;
-import com.moxi.mogublog.xo.service.UserService;
+import com.cutter.point.blog.xo.entity.User;
+import com.cutter.point.blog.xo.service.UserService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

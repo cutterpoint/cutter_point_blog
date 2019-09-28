@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,8 @@ import com.moxi.mogublog.utils.WebUtils;
 import com.cutter.point.blog.web.feign.PictureFeignClient;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
-import com.moxi.mogublog.xo.entity.Admin;
-import com.moxi.mogublog.xo.service.AdminService;
+import com.cutter.point.blog.xo.entity.Admin;
+import com.cutter.point.blog.xo.service.AdminService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,7 @@ public class AboutMeRestApi {
 	private PictureFeignClient pictureFeignClient;
 	
 	@Autowired
+	@Qualifier("adminServiceImpl")
 	AdminService adminService;
 	
 	private static Logger log = LogManager.getLogger(AboutMeRestApi.class);
