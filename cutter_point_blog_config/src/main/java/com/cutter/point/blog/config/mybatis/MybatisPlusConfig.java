@@ -21,7 +21,7 @@ public class MybatisPlusConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer scannerConfigurer = new MapperScannerConfigurer();
-        scannerConfigurer.setBasePackage("com.moxi.mogublog.xo.mapper*");
+        scannerConfigurer.setBasePackage("com.cutter.point.blog.xo.mapper*");
         return scannerConfigurer;
     }
     

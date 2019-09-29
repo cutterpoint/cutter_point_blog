@@ -14,7 +14,7 @@ import org.springframework.data.solr.server.support.HttpSolrClientFactoryBean;
  * @author limboy
  * @create 2018-09-29 16:09
  */
-//@Configuration
+@Configuration
 public class SolrConfig {
     @Value("${spring.data.solr.host}")
     private String solrHost;
