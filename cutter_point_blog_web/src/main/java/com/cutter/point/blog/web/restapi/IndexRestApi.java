@@ -14,19 +14,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.moxi.mogublog.utils.IpUtils;
-import com.moxi.mogublog.utils.JsonUtils;
-import com.moxi.mogublog.utils.ResultUtil;
-import com.moxi.mogublog.utils.StringUtils;
-import com.moxi.mogublog.utils.WebUtils;
+import com.cutter.point.blog.utils.IpUtils;
+import com.cutter.point.blog.utils.JsonUtils;
+import com.cutter.point.blog.utils.ResultUtil;
+import com.cutter.point.blog.utils.StringUtils;
+import com.cutter.point.blog.utils.WebUtils;
 import com.cutter.point.blog.web.feign.PictureFeignClient;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
@@ -111,6 +108,13 @@ public class IndexRestApi {
 	private Integer BLOG_FOURTH_COUNT;
 	
 	private static Logger log = LogManager.getLogger(IndexRestApi.class);
+
+    @ApiOperation(value="测试api", notes="测试api")
+    @RequestMapping("/FeignClienthello")
+    @ResponseBody
+    public String FeignClienthello() {
+        return this.pictureFeignClient.hello();
+    }
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@ApiOperation(value="通过推荐等级获取博客列表", notes="通过推荐等级获取博客列表")
@@ -364,7 +368,7 @@ public class IndexRestApi {
 		});
 		String pictureList = null;
 		
-		if(fileUids != null) {
+		if(fileUids != null && !StringUtils.isEmpty(fileUids.toString())) {
 			pictureList = this.pictureFeignClient.getPicture(fileUids.toString(), ",");
 		}
 		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);				

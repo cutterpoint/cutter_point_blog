@@ -25,7 +25,7 @@ public class LoginController {
 	public String hello() {
 		return "hello";
 	}
-    
+
 	//该接口只有当畅言已登录，getUserInfo返回未登录时，才会被调用用来登录自身网站
     @RequestMapping("login")
     public void loginByCy(@RequestParam(value = "callback") String callback,

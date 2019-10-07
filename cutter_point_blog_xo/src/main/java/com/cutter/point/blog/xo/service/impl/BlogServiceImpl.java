@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.moxi.mogublog.utils.StringUtils;
+import com.cutter.point.blog.utils.StringUtils;
 import com.cutter.point.blog.xo.entity.Blog;
 import com.cutter.point.blog.xo.mapper.BlogMapper;
 import com.cutter.point.blog.xo.mapper.BlogSortMapper;

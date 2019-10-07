@@ -47,6 +47,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    //多环境配置引入
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),

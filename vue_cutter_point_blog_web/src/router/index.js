@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+//这里声明一个变量对象
 export const constantRouterMap = [
   { path: '/', component: () => import('@/views/index') },
   { path: '/index', component: () => import('@/views/index') },

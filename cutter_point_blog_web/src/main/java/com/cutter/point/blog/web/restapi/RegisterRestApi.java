@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.moxi.mogublog.utils.CheckUtils;
-import com.moxi.mogublog.utils.ResultUtil;
-import com.moxi.mogublog.utils.StringUtils;
+import com.cutter.point.blog.utils.CheckUtils;
+import com.cutter.point.blog.utils.ResultUtil;
+import com.cutter.point.blog.utils.StringUtils;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
 import com.cutter.point.blog.xo.entity.User;

@@ -25,8 +25,16 @@ zuul:
       stripPrefix: false
       path: /cutter-point-monitor/**
       serviceId: cutter-point-monitor
+    cutter-point-blog-web:
+      stripPrefix: false
+      path: /cutter-point-blog-web/**
+      serviceId: cutter-point-blog-web
+    cutter-point-picture:
+      stripPrefix: false
+      path: /cutter-point-blog-picture/**
+      serviceId: cutter-point-blog-picture
     #直接转发ip请求
     users:
-      path: /**PictureFeignClient
+      path: /**
       url: http://127.0.0.1:9526/#/
 

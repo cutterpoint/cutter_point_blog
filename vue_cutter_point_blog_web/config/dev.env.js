@@ -5,9 +5,9 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   
- 	BASE_BLOG_API: '"http://localhost:9527"',
+ 	BASE_BLOG_API: '"http://localhost:9527/cutter-point-blog-web"',
  	PICTURE_API: '"http://localhost:8602"',
-	WEB_API: '"http://localhost:8603"',
+	WEB_API: '"http://localhost:9527/cutter-point-blog-web"',
 
 	// BASE_BLOG_API: '"http://localhost:8080/mogu_blog"',
 	// PICTURE_API: '"http://localhost:8080/mogu_picture"',

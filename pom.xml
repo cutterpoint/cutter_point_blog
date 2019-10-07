@@ -43,6 +43,7 @@
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <redis.clients.version>2.9.0</redis.clients.version>
+        <mysql.version>8.0.15</mysql.version>
     </properties>
 
 
@@ -52,7 +53,7 @@
         <module>cutter_point_blog_xo</module>
         <!--<module>mogu_admin</module>-->
         <module>cutter_point_blog_web</module>
-        <!--<module>mogu_picture</module>-->
+        <module>cutter_point_blog_picture</module>
         <module>cutter_point_eureka</module>
         <!--<module>mogu_sms</module>-->
         <module>cutter_point_zuul</module>
@@ -90,6 +91,12 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${redis.clients.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+            <!--<scope>runtime</scope>-->
         </dependency>
 
     </dependencies>

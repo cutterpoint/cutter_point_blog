@@ -7,5 +7,5 @@ module.exports = merge(devEnv, {
   
   //配置测试环境
  	PICTURE_API: '"http://localhost:8602"',
-	WEB_API: '"http://localhost:8603"',
+   WEB_API: '"http://localhost:9527/cutter-point-blog-web"',
 })

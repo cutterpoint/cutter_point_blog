@@ -1,12 +1,14 @@
 #app
 server:
     port: 8603
+    servlet:
+      context-path: /cutter-point-blog-web
 
 #阿里大于
 templateCode: SMS_XXXXXX #短信模板编号
 signName: cutter_point博客
 
-moguBlog:
+cutterpointBlog:
    email: xiaofengbly@163.com
     
 #Data image url
@@ -43,7 +45,6 @@ spring:
     password: cutter_point
     #?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false
     url: jdbc:mysql://127.0.0.1:3306/cutter_point?useSSL=false
-
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
@@ -72,12 +73,12 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     
   #Solr配置信息
-#  data:
-#    solr:
-#      host: http://localhost:8080/solr
-#      core: collection1
-#      repositories:
-#        enabled: true
+  data:
+    solr:
+      host: http://localhost:8080/solr
+      core: collection1
+      repositories:
+        enabled: true
   
   #redis
   redis:
@@ -90,7 +91,7 @@ spring:
 eureka:
   client:
     healthcheck:
-      enabled: true
+      enabled: false
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
   instance:
@@ -99,6 +100,7 @@ eureka:
     metadata-map:
       zone: ABC      # eureka可以理解的元数据
       lilizhou: BBC  # 不会影响客户端行为
+    #客户端续约时间
     lease-renewal-interval-in-seconds: 5
     
 # 或者：

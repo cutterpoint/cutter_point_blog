@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.moxi.mogublog.utils.DateUtils;
+import com.cutter.point.blog.utils.DateUtils;
 import com.cutter.point.blog.xo.entity.WebVisit;
 import com.cutter.point.blog.xo.mapper.WebVisitMapper;
 import com.cutter.point.blog.xo.service.WebVisitService;

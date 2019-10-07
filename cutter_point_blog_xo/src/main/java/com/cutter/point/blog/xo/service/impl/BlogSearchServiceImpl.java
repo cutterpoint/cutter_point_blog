@@ -20,7 +20,7 @@ import org.springframework.data.solr.core.query.result.HighlightEntry;
 import org.springframework.data.solr.core.query.result.HighlightPage;
 import org.springframework.stereotype.Service;
 
-import com.moxi.mogublog.utils.StringUtils;
+import com.cutter.point.blog.utils.StringUtils;
 import com.cutter.point.blog.xo.entity.Blog;
 import com.cutter.point.blog.xo.service.BlogSearchService;
 import com.cutter.point.blog.xo.service.BlogSortService;

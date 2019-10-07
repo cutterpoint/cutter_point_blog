@@ -10,11 +10,9 @@ import com.cutter.point.blog.web.config.FeignConfiguration;
 
 /**
  * mogu_picture相关接口
- * @author xuzhixiang
  *
  */
-
-@FeignClient(name = "cutter-point-picture", url = "http://localhost:8602/", configuration = FeignConfiguration.class)
+@FeignClient(name = "cutter-point-blog-picture")
 public interface PictureFeignClient {
 	
 
@@ -24,9 +22,9 @@ public interface PictureFeignClient {
 	   @ApiImplicitParam(name = "code", value = "分割符", required = false, dataType = "String")
 	 * @return
 	 */
-	@RequestMapping(value = "/file/getPicture", method = RequestMethod.GET)
+	@RequestMapping(value = "/cutter-point-blog-picture/file/getPicture", method = RequestMethod.GET)
 	public String getPicture(@RequestParam("fileIds") String fileIds, @RequestParam("code") String code);
 	
-	@RequestMapping(value = "/file/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/cutter-point-blog-picture/file/hello", method = RequestMethod.GET)
 	public String hello();
 }
