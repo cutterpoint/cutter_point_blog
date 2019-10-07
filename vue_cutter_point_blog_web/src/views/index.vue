@@ -136,7 +136,8 @@ import {
   getNewBlog,
   getHotBlog,
   getHotTag,
-  recorderVisitPage
+  recorderVisitPage,
+  getBlogByLevelAjax
 } from "../api/index";
 export default {
   name: "index",
@@ -203,15 +204,21 @@ export default {
   },
   created() {
     debugger;
-    var secondParams = new URLSearchParams();
-    secondParams.append("level", 2);
-    getBlogByLevel(secondParams).then(response => {
-      this.secondData = response.data.records;
+    // var secondParams = new URLSearchParams();
+    // secondParams.append("level", 2);
+    // getBlogByLevel(secondParams).then(response => {
+    //   this.secondData = response.data.records;
+    // }); 
+    var levelparams = {"level":2};
+    var levelResult;
+    getBlogByLevelAjax(levelparams).then(response => {
+      levelResult = response.data.records;
     });
+    
+    this.secondData = levelResult;
 
     // 获取最新博客
     this.newBlogList();
-
     var params = new URLSearchParams();
     params.append("pageName", "INDEX");
     recorderVisitPage(params).then(response => {});
