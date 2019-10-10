@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.entity;
+package com.cutter.point.blog.base.entity;
 import java.io.Serializable;
 import java.util.Date;
 

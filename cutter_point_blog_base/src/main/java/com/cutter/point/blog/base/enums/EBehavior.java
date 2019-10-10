@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.enums;
+package com.cutter.point.blog.base.enums;
 
 public enum EBehavior {
     

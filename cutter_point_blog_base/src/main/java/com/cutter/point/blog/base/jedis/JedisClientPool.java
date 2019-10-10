@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.jedis;
+package com.cutter.point.blog.base.jedis;
 
 import java.util.List;
 

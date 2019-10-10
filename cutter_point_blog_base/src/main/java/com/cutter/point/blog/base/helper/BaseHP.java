@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.helper;
+package com.cutter.point.blog.base.helper;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.controller;
+package com.cutter.point.blog.base.controller;
 
 import java.util.HashMap;
 import java.util.List;

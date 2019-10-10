@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.enums;
+package com.cutter.point.blog.base.enums;
 /**
  * 状态枚举类
  * @author xuzhixiang

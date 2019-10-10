@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.mapper;
+package com.cutter.point.blog.base.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

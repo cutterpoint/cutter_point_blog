@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.service;
+package com.cutter.point.blog.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 

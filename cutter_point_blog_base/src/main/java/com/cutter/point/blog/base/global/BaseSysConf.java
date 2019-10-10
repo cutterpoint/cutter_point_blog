@@ -1,4 +1,4 @@
-package com.moxi.mougblog.base.global;
+package com.cutter.point.blog.base.global;
 
 /**
  * 常量的基类

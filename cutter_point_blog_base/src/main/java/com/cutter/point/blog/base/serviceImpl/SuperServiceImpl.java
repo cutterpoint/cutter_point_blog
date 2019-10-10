@@ -1,8 +1,8 @@
-package com.moxi.mougblog.base.serviceImpl;
+package com.cutter.point.blog.base.serviceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.moxi.mougblog.base.mapper.SuperMapper;
-import com.moxi.mougblog.base.service.SuperService;
+import com.cutter.point.blog.base.mapper.SuperMapper;
+import com.cutter.point.blog.base.service.SuperService;
 
 
 /**
