@@ -15,25 +15,24 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import com.cutter.point.blog.picture.entity.FileSort;
+import com.cutter.point.blog.picture.entity.TFileStore;
 import com.cutter.point.blog.picture.service.FileService;
 import com.cutter.point.blog.picture.service.FileSortService;
+import com.cutter.point.blog.picture.util.FileReaderUtil;
+import com.cutter.point.blog.picture.util.FileWriterUtil;
 import com.cutter.point.blog.utils.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cutter.point.blog.picture.global.SQLConf;
 import com.cutter.point.blog.picture.global.SysConf;
-import com.moxi.mougblog.base.enums.EStatus;
+import com.cutter.point.blog.base.enums.EStatus;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -66,6 +65,9 @@ public class FileRestApi {
 	
 	@Value(value="${file.upload.path}") //获取上传路径
 	private String path;
+
+	@Value(value = "${file.size}") //单个文件的大小
+	private int size;
 	
 	Logger log = Logger.getLogger(FileRestApi.class);
 	
@@ -73,6 +75,21 @@ public class FileRestApi {
 	public String hello() {
 		return "hello";
 	}
+
+
+	@ApiOperation(value="data上传字节流到制定存储块", notes="存放数据")
+	@GetMapping("/write")
+	public String write(@RequestBody byte[] data) {
+		TFileStore tFileStore = FileWriterUtil.getInstance().write(data);
+		return JSON.toJSONString(tFileStore);
+	}
+
+	@ApiOperation(value="data读取字节流", notes="读取数据")
+	@GetMapping("/read")
+	public byte[] read(@RequestParam(required = true) String filePath, @RequestParam(required = true) long position, @RequestParam(required = true) int msgLength) {
+		return FileReaderUtil.read(filePath, position, msgLength);
+	}
+
 	/**
 	 * 获取后缀名
 	 * @param fileName
@@ -323,5 +340,6 @@ public class FileRestApi {
 		}
 		return ResultUtil.result(SysConf.ERROR, "请上传图片");
 	}
+
 }
 

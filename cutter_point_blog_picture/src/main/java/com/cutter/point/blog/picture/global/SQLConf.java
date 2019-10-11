@@ -1,6 +1,6 @@
 package com.cutter.point.blog.picture.global;
 
-import com.moxi.mougblog.base.global.BaseSQLConf;
+import com.cutter.point.blog.base.global.BaseSQLConf;
 
 /**
  * SQL字段常量

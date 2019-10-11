@@ -11,6 +11,8 @@ data:
 file:
   upload:
     path: D:/mogu_blog/data
+  #单个文件的大小M
+  size: 256
 
 #spring
 spring:

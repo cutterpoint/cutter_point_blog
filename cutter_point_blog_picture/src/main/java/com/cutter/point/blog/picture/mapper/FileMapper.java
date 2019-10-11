@@ -1,7 +1,7 @@
 package com.cutter.point.blog.picture.mapper;
 
 import com.cutter.point.blog.picture.entity.File;
-import com.moxi.mougblog.base.mapper.SuperMapper;
+import com.cutter.point.blog.base.mapper.SuperMapper;
 
 /**
  * <p>

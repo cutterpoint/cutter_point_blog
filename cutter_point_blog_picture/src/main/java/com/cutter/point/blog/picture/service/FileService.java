@@ -1,7 +1,7 @@
 package com.cutter.point.blog.picture.service;
 
 import com.cutter.point.blog.picture.entity.File;
-import com.moxi.mougblog.base.service.SuperService;
+import com.cutter.point.blog.base.service.SuperService;
 
 /**
  * <p>
