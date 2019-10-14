@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.moxi.mougblog.base.entity.SuperEntity;
+import com.cutter.point.blog.base.entity.SuperEntity;
 
 /**
  * <p>

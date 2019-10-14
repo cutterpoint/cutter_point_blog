@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.cutter.point.blog.xo.entity.Feedback;
 import com.cutter.point.blog.xo.mapper.FeedbackMapper;
 import com.cutter.point.blog.xo.service.FeedbackService;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 /**
  * <p>

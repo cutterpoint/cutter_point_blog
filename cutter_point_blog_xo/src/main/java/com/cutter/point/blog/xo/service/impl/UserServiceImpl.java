@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.cutter.point.blog.xo.entity.User;
 import com.cutter.point.blog.xo.mapper.UserMapper;
 import com.cutter.point.blog.xo.service.UserService;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 /**
  * <p>

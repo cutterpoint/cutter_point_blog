@@ -4,8 +4,8 @@ import com.cutter.point.blog.xo.entity.Todo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.moxi.mougblog.base.enums.EStatus;
-import com.moxi.mougblog.base.mapper.SuperMapper;
+import com.cutter.point.blog.base.enums.EStatus;
+import com.cutter.point.blog.base.mapper.SuperMapper;
 
 /**
  * <p>

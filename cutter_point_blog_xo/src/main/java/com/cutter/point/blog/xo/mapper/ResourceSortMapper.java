@@ -1,7 +1,7 @@
 package com.cutter.point.blog.xo.mapper;
 
 import com.cutter.point.blog.xo.entity.ResourceSort;
-import com.moxi.mougblog.base.mapper.SuperMapper;
+import com.cutter.point.blog.base.mapper.SuperMapper;
 
 /**
  * <p>

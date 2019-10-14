@@ -1,7 +1,7 @@
 package com.cutter.point.blog.xo.service;
 
 import com.cutter.point.blog.xo.entity.CategoryMenu;
-import com.moxi.mougblog.base.service.SuperService;
+import com.cutter.point.blog.base.service.SuperService;
 
 /**
  * <p>

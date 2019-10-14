@@ -25,7 +25,7 @@ import com.cutter.point.blog.xo.entity.Blog;
 import com.cutter.point.blog.xo.service.BlogSearchService;
 import com.cutter.point.blog.xo.service.BlogSortService;
 import com.cutter.point.blog.xo.service.TagService;
-import com.moxi.mougblog.base.enums.EStatus;
+import com.cutter.point.blog.base.enums.EStatus;
 
 /**
  * solr索引维护实现

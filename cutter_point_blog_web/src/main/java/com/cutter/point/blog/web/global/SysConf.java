@@ -1,6 +1,6 @@
 package com.cutter.point.blog.web.global;
 
-import com.moxi.mougblog.base.global.BaseSysConf;
+import com.cutter.point.blog.base.global.BaseSysConf;
 
 /**
  * 系统常量

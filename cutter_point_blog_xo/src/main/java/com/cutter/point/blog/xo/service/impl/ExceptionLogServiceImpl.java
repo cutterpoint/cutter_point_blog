@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.cutter.point.blog.xo.entity.ExceptionLog;
 import com.cutter.point.blog.xo.mapper.ExceptionLogMapper;
 import com.cutter.point.blog.xo.service.ExceptionLogService;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 
 /**

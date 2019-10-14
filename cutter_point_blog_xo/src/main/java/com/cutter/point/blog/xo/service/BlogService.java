@@ -6,7 +6,7 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cutter.point.blog.xo.entity.Blog;
-import com.moxi.mougblog.base.service.SuperService;
+import com.cutter.point.blog.base.service.SuperService;
 
 /**
  * <p>

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.cutter.point.blog.xo.mapper.WebConfigMapper;
 import com.cutter.point.blog.xo.service.WebConfigService;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 
 /**

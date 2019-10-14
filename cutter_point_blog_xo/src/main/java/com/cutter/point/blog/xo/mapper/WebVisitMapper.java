@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.cutter.point.blog.xo.entity.WebVisit;
-import com.moxi.mougblog.base.mapper.SuperMapper;
+import com.cutter.point.blog.base.mapper.SuperMapper;
 
 /**
  * <p>

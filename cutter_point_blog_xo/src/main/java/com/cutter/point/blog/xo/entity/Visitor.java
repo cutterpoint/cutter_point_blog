@@ -3,7 +3,7 @@ package com.cutter.point.blog.xo.entity;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.moxi.mougblog.base.entity.SuperEntity;
+import com.cutter.point.blog.base.entity.SuperEntity;
 
 /**
  * <p>

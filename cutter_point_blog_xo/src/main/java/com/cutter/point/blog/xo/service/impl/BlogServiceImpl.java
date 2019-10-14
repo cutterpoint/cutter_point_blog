@@ -21,10 +21,10 @@ import com.cutter.point.blog.xo.mapper.BlogMapper;
 import com.cutter.point.blog.xo.mapper.BlogSortMapper;
 import com.cutter.point.blog.xo.mapper.TagMapper;
 import com.cutter.point.blog.xo.service.BlogService;
-import com.moxi.mougblog.base.enums.EPublish;
-import com.moxi.mougblog.base.enums.EStatus;
-import com.moxi.mougblog.base.global.BaseSQLConf;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.enums.EPublish;
+import com.cutter.point.blog.base.enums.EStatus;
+import com.cutter.point.blog.base.global.BaseSQLConf;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 /**
  * <p>

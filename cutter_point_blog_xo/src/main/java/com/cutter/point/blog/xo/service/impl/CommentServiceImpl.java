@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cutter.point.blog.xo.mapper.CommentMapper;
 import com.cutter.point.blog.xo.service.CommentService;
-import com.moxi.mougblog.base.global.BaseSQLConf;
-import com.moxi.mougblog.base.serviceImpl.SuperServiceImpl;
+import com.cutter.point.blog.base.global.BaseSQLConf;
+import com.cutter.point.blog.base.serviceImpl.SuperServiceImpl;
 
 /**
  * <p>

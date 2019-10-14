@@ -38,11 +38,11 @@ import com.cutter.point.blog.xo.service.LinkService;
 import com.cutter.point.blog.xo.service.TagService;
 import com.cutter.point.blog.xo.service.WebConfigService;
 import com.cutter.point.blog.xo.service.WebVisitService;
-import com.moxi.mougblog.base.enums.EBehavior;
-import com.moxi.mougblog.base.enums.ELevel;
-import com.moxi.mougblog.base.enums.EPublish;
-import com.moxi.mougblog.base.enums.EStatus;
-import com.moxi.mougblog.base.global.BaseSQLConf;
+import com.cutter.point.blog.base.enums.EBehavior;
+import com.cutter.point.blog.base.enums.ELevel;
+import com.cutter.point.blog.base.enums.EPublish;
+import com.cutter.point.blog.base.enums.EStatus;
+import com.cutter.point.blog.base.global.BaseSQLConf;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

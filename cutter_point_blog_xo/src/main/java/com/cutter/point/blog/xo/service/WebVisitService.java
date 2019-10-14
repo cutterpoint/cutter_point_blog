@@ -3,7 +3,7 @@ package com.cutter.point.blog.xo.service;
 import java.util.Map;
 
 import com.cutter.point.blog.xo.entity.WebVisit;
-import com.moxi.mougblog.base.service.SuperService;
+import com.cutter.point.blog.base.service.SuperService;
 
 /**
  * <p>

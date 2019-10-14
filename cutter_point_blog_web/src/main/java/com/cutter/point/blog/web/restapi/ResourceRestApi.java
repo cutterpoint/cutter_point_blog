@@ -31,7 +31,7 @@ import com.cutter.point.blog.xo.entity.ResourceSort;
 import com.cutter.point.blog.xo.entity.StudyVideo;
 import com.cutter.point.blog.xo.service.ResourceSortService;
 import com.cutter.point.blog.xo.service.StudyVideoService;
-import com.moxi.mougblog.base.enums.EStatus;
+import com.cutter.point.blog.base.enums.EStatus;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

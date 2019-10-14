@@ -36,8 +36,8 @@ import com.cutter.point.blog.xo.service.BlogService;
 import com.cutter.point.blog.xo.service.BlogSortService;
 import com.cutter.point.blog.xo.service.TagService;
 import com.cutter.point.blog.xo.service.WebVisitService;
-import com.moxi.mougblog.base.enums.EBehavior;
-import com.moxi.mougblog.base.enums.EStatus;
+import com.cutter.point.blog.base.enums.EBehavior;
+import com.cutter.point.blog.base.enums.EStatus;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

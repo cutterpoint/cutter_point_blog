@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.moxi.mougblog.base.entity.SuperEntity;
+import com.cutter.point.blog.base.entity.SuperEntity;
 
 /**
  * 相册分类实体类
