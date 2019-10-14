@@ -9,10 +9,11 @@ data:
   image:
     url: http://localhost:8600/
 file:
-  upload:
-    path: D:/mogu_blog/data
+#  upload:
+#    path: D:/mogu_blog/data
   #单个文件的大小M
   size: 256
+  fileBasePath: C:\Users\xiaof\Desktop\myblog\filestore
 
 #spring
 spring:
@@ -31,7 +32,7 @@ spring:
   datasource:
     username: cutter_point
     password: cutter_point
-    url: jdbc:mysql://127.0.0.1:3306/cutter_point?useSSL=false
+    url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
