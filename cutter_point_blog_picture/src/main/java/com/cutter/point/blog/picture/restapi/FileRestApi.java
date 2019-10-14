@@ -78,14 +78,14 @@ public class FileRestApi {
 
 
 	@ApiOperation(value="data上传字节流到制定存储块", notes="存放数据")
-	@GetMapping("/write")
+	@RequestMapping("/write")
 	public String write(@RequestBody byte[] data) {
 		TFileStore tFileStore = FileWriterUtil.getInstance().write(data);
 		return JSON.toJSONString(tFileStore);
 	}
 
 	@ApiOperation(value="data读取字节流", notes="读取数据")
-	@GetMapping("/read")
+	@RequestMapping("/read")
 	public byte[] read(@RequestParam(required = true) String filePath, @RequestParam(required = true) long position, @RequestParam(required = true) int msgLength) {
 		return FileReaderUtil.read(filePath, position, msgLength);
 	}

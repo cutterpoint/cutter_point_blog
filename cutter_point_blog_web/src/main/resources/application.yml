@@ -13,12 +13,14 @@ cutterpointBlog:
     
 #Data image url
 data:
-  image:
-    url: http://localhost:8600/
+#  image:
+#    url: http://localhost:8600/
 file:
-  upload:
-    #H:\6-ideaworkspace\github\mogu_blog_v2
-    path: H:/6-ideaworkspace/1-tmp/data/
+  fileBasePath: C:\Users\xiaof\Desktop\myblog\filestore
+  maxFileSize: 1024 * 1024 * 64
+#  upload:
+#    #H:\6-ideaworkspace\github\mogu_blog_v2
+#    path: H:/6-ideaworkspace/1-tmp/data/
 
 #博客相关配置
 BLOG:
@@ -44,7 +46,7 @@ spring:
     username: cutter_point
     password: cutter_point
     #?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false
-    url: jdbc:mysql://127.0.0.1:3306/cutter_point?useSSL=false
+    url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
@@ -93,7 +95,7 @@ eureka:
     healthcheck:
       enabled: false
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
+      defaultZone: http://192.168.0.104:8761/cutter-point-eureka/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cutter.point.blog.xo.entity.TFileStore;
 import org.apache.commons.collections.MapUtils;
 import org.springframework.util.StringUtils;
 
@@ -59,6 +60,12 @@ public class WebUtils {
 				}
 			}
 		}
+		return picUrls;
+	}
+
+	public static List<String> getPicture(List<TFileStore> result) {
+		List<String> picUrls = new ArrayList<>();
+		//转换为对应的路径，进行请求对应的图片信息的url
 		return picUrls;
 	}
 	

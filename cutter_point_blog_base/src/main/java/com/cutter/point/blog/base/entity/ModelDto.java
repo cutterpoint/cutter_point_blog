@@ -310,12 +310,11 @@ public abstract class ModelDto {
     /**
      * 对这个model数据进行查询,并对自己赋值
      */
-    public List<ModelDto> qry() {
+    public List<? extends ModelDto> qry() {
 
         //1、组装select基础语句
         List<ModelDto> res = null;
         List paramList = new ArrayList();
-        Map params = new HashMap();
         StringBuffer sql = new StringBuffer("select * ");
 
         try {
@@ -359,7 +358,6 @@ public abstract class ModelDto {
             //设置参数,先是待更新对象，然后是条件参数
             //获取结果
             res = jdbcTemplate.query(sql.toString(), paramList.toArray(), new BeanPropertyRowMapper(this.getClass()));
-
         } catch (IllegalAccessException e) {
             logger.error(e.getMessage(), e);
         } catch (SQLException e) {

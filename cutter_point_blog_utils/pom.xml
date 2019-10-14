@@ -64,6 +64,12 @@
     		<groupId>commons-codec</groupId>
     		<artifactId>commons-codec</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>cutter.point</groupId>
+            <artifactId>cutter_point_blog_xo</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 </project>

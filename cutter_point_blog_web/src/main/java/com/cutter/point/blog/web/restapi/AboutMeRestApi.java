@@ -3,6 +3,7 @@ package com.cutter.point.blog.web.restapi;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cutter.point.blog.xo.entity.TFileStore;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import com.cutter.point.blog.xo.service.AdminService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
+import java.util.List;
 
 /**
  * 关于我 RestApi
@@ -59,8 +62,12 @@ public class AboutMeRestApi {
 		admin.setPassWord(null); //清空密码，防止泄露
 		//获取图片
 		if(StringUtils.isNotEmpty(admin.getAvatar())) {
-			String pictureList = this.pictureFeignClient.getPicture(admin.getAvatar(), ",");
-			admin.setPhotoList(WebUtils.getPicture(pictureList));
+			//这里查询照片信息表，然后通过参数页面上获取read读取图片
+			TFileStore tFileStore = new TFileStore();
+			tFileStore.setUid(admin.getAvatar());
+			List<TFileStore> tFileStores = (List<TFileStore>) tFileStore.qry();
+//			String pictureList = this.pictureFeignClient.getPicture(admin.getAvatar(), ",");
+			admin.setPhotoList(WebUtils.getPicture(tFileStores));
 		}
 		log.info("获取用户信息");
 		Admin result = new Admin();		
