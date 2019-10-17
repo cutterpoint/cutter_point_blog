@@ -9,6 +9,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cutter.point.blog.web.constrant.BlogWebYmlConstrant;
+import com.cutter.point.blog.web.util.UrlUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -306,13 +308,13 @@ public class IndexRestApi {
 		WebConfig webConfig = webConfigService.getOne(queryWrapper);
 		
 		if(StringUtils.isNotEmpty(webConfig.getLogo())) {
-			String pictureList = this.pictureFeignClient.getPicture(webConfig.getLogo(), ",");
+			String pictureList = BlogWebYmlConstrant.getImageUrl + "?uid=" + webConfig.getLogo();
 			webConfig.setPhotoList(WebUtils.getPicture(pictureList));
 		}
 		
 		//获取支付宝收款二维码
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getAliPay())) {
-			String pictureList = this.pictureFeignClient.getPicture(webConfig.getAliPay(), ",");
+			String pictureList = UrlUtil.getImageUrl(webConfig.getAliPay());
 			if(WebUtils.getPicture(pictureList).size() > 0) {
 				webConfig.setAliPayPhoto(WebUtils.getPicture(pictureList).get(0));	
 			}
@@ -320,7 +322,7 @@ public class IndexRestApi {
 		}
 		//获取微信收款二维码
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getWeixinPay())) {
-			String pictureList = this.pictureFeignClient.getPicture(webConfig.getWeixinPay(), ",");
+			String pictureList = UrlUtil.getImageUrl(webConfig.getWeixinPay());
 			if(WebUtils.getPicture(pictureList).size() > 0) {
 				webConfig.setWeixinPayPhoto(WebUtils.getPicture(pictureList).get(0));	
 			}
@@ -351,13 +353,14 @@ public class IndexRestApi {
 	 * @return
 	 */
 	private List<Blog> setBlog(List<Blog> list) {
-		final StringBuffer fileUids = new StringBuffer();
+		List<String> fileUids = new ArrayList();
 		List<String> sortUids = new ArrayList<String>();
 		List<String> tagUids = new ArrayList<String>();
 
 		list.forEach( item -> {
 			if(StringUtils.isNotEmpty(item.getFileUid())) {
-				fileUids.append(item.getFileUid() + ",");
+//				fileUids.append(item.getFileUid() + ",");
+				fileUids.add(item.getFileUid());
 			}
 			if(StringUtils.isNotEmpty(item.getBlogSortUid())) {
 				sortUids.add(item.getBlogSortUid());
@@ -368,10 +371,10 @@ public class IndexRestApi {
 		});
 		String pictureList = null;
 		
-		if(fileUids != null && !StringUtils.isEmpty(fileUids.toString())) {
-			pictureList = this.pictureFeignClient.getPicture(fileUids.toString(), ",");
-		}
-		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);				
+//		if(fileUids != null && !StringUtils.isEmpty(fileUids.toString())) {
+//			pictureList = this.pictureFeignClient.getPicture(fileUids.toString(), ",");
+//		}
+//		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);
 		Collection<BlogSort> sortList = new ArrayList<>();
 		Collection<Tag> tagList = new ArrayList<>();
 		if (sortUids.size() > 0) {
@@ -393,9 +396,10 @@ public class IndexRestApi {
 		tagList.forEach(item -> {
 			tagMap.put(item.getUid(), item);
 		});
-		
-		picList.forEach(item -> {
-			pictureMap.put(item.get("uid").toString(), item.get("url").toString());
+
+		fileUids.forEach(item -> {
+			//获取每一个uid对应的图片读取路径
+			pictureMap.put(item, UrlUtil.getImageUrl(item));
 		});
 		
 		
@@ -430,5 +434,6 @@ public class IndexRestApi {
 		}
 		return list;
 	}
+
 }
 

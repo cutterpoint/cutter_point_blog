@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cutter.point.blog.web.constrant.BlogWebYmlConstrant;
+import com.cutter.point.blog.xo.entity.TFileStore;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -301,8 +303,9 @@ public class BlogContentRestApi {
 	 */
 	private void setPhotoListByBlog(Blog blog) {
 		//获取标题图片
-		if(blog != null && !StringUtils.isEmpty(blog.getFileUid())) {				
-			String result = this.pictureFeignClient.getPicture(blog.getFileUid(), ",");
+		if(blog != null && !StringUtils.isEmpty(blog.getFileUid())) {
+			//通过uid获取对应的文件信息
+			String result = BlogWebYmlConstrant.getImageUrl + "?uid=" + blog.getFileUid();
 			List<String> picList = WebUtils.getPicture(result);
 			log.info("##### picList: #######" + picList);
 			if(picList != null && picList.size() > 0) {

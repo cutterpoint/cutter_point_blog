@@ -1,15 +1,11 @@
 package com.cutter.point.blog.web.restapi;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cutter.point.blog.web.util.UrlUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,18 +75,18 @@ public class ResourceRestApi {
 		
 		//获取所有的分类
 		Set<String> resourceSortUids = new HashSet<>();
-		String fileIds = "";
+		List<String> fileIds = new ArrayList();
 		for(StudyVideo item : list) {
 			if(StringUtils.isNotEmpty(item.getResourceSortUid())) {
 				resourceSortUids.add(item.getResourceSortUid());				
 			}
 			if(StringUtils.isNotEmpty(item.getFileUid())) {
-				fileIds = fileIds + item.getFileUid() + ",";
+				fileIds.add(item.getFileUid());
 			}
 		}
 		//PictureList
-		String result = this.pictureFeignClient.getPicture(fileIds, ",");
-		List<Map<String, Object>> picList = WebUtils.getPictureMap(result);
+//		String result = this.pictureFeignClient.getPicture(fileIds, ",");
+//		List<Map<String, Object>> picList = WebUtils.getPictureMap(result);
 		
 		//ResourceSort
 		Collection<ResourceSort> resourceSortList = resourceSortService.listByIds(resourceSortUids);
@@ -102,19 +98,24 @@ public class ResourceRestApi {
 					break;
 				}				
 			}
-			
-			for(Map<String, Object> map : picList) {
-				//因为资源可能有多个图片
-				String fileUid = item.getFileUid();
-				List<String> fileUids = StringUtils.changeStringToString(fileUid, ",");				
-				for(String uid : fileUids) {
-					if(map.get("uid").toString().equals(uid)) {						
-						photoList.add(map.get("url").toString());
-					}
-				}
-				
-			}
-			item.setPhotoList(photoList);
+
+//			for(Map<String, Object> map : picList) {
+//				//因为资源可能有多个图片
+//				String fileUid = item.getFileUid();
+//				List<String> fileUids = StringUtils.changeStringToString(fileUid, ",");
+//				for(String uid : fileUids) {
+//					if(map.get("uid").toString().equals(uid)) {
+//						photoList.add(map.get("url").toString());
+//					}
+//				}
+//
+//			}
+//
+//			fileIds.forEach(item1 -> {
+//				photoList.add(UrlUtil.getImageUrl(item1));
+//			});
+
+			item.setPhotoList(Arrays.asList(UrlUtil.getImageUrl(item.getFileUid())));
 		}
 		
 		log.info("返回结果");		

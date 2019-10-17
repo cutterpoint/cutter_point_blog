@@ -18,8 +18,8 @@ public class TFileStore extends ModelDto {
     private String fileName;
     private String fileUrl;
     private String fileExpandedName;
-    private Integer filePosition;
-    private Long fileSize;
+    private Long filePosition;
+    private Integer fileSize;
     private String key;
     private String keyType;
     private int status;
@@ -66,19 +66,19 @@ public class TFileStore extends ModelDto {
         this.fileExpandedName = fileExpandedName;
     }
 
-    public Integer getFilePosition() {
+    public Long getFilePosition() {
         return filePosition;
     }
 
-    public void setFilePosition(Integer filePosition) {
+    public void setFilePosition(Long filePosition) {
         this.filePosition = filePosition;
     }
 
-    public Long getFileSize() {
+    public Integer getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(Long fileSize) {
+    public void setFileSize(Integer fileSize) {
         this.fileSize = fileSize;
     }
 

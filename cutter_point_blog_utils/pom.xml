@@ -19,13 +19,6 @@
 		    <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
-       	<!-- 格式化对象，方便输出日志 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${alibaba.fastjson.version}</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -64,12 +57,6 @@
     		<groupId>commons-codec</groupId>
     		<artifactId>commons-codec</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>cutter.point</groupId>
-            <artifactId>cutter_point_blog_xo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
 
     </dependencies>
 </project>

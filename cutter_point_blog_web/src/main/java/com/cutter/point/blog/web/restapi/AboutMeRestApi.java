@@ -3,6 +3,7 @@ package com.cutter.point.blog.web.restapi;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cutter.point.blog.web.util.UrlUtil;
 import com.cutter.point.blog.xo.entity.TFileStore;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -25,6 +26,7 @@ import com.cutter.point.blog.xo.service.AdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,11 +65,8 @@ public class AboutMeRestApi {
 		//获取图片
 		if(StringUtils.isNotEmpty(admin.getAvatar())) {
 			//这里查询照片信息表，然后通过参数页面上获取read读取图片
-			TFileStore tFileStore = new TFileStore();
-			tFileStore.setUid(admin.getAvatar());
-			List<TFileStore> tFileStores = (List<TFileStore>) tFileStore.qry();
 //			String pictureList = this.pictureFeignClient.getPicture(admin.getAvatar(), ",");
-			admin.setPhotoList(WebUtils.getPicture(tFileStores));
+			admin.setPhotoList(Arrays.asList(UrlUtil.getImageUrl(admin.getAvatar())));
 		}
 		log.info("获取用户信息");
 		Admin result = new Admin();		

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.cutter.point.blog.xo.entity.TFileStore;
 import org.apache.commons.collections.MapUtils;
 import org.springframework.util.StringUtils;
 
@@ -16,7 +15,7 @@ import org.springframework.util.StringUtils;
  *
  */
 public class WebUtils {
-	
+
     /**
      * HTML字符转义
      * 对输入参数中的敏感字符进行过滤替换,防止用户利用JavaScript等方式输入恶意代码
@@ -63,12 +62,6 @@ public class WebUtils {
 		return picUrls;
 	}
 
-	public static List<String> getPicture(List<TFileStore> result) {
-		List<String> picUrls = new ArrayList<>();
-		//转换为对应的路径，进行请求对应的图片信息的url
-		return picUrls;
-	}
-	
 	/**
 	 * 获取图片，返回Map
 	 * @author xzx19950624@qq.com
