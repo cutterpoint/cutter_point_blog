@@ -18,7 +18,7 @@ eureka:
   client:
     service-url:
       #多个地址可使用 , 分隔
-      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka
+      defaultZone: http://192.168.0.104:8761/cutter-point-eureka/eureka
     #    禁止自己向自己注册
     register-with-eureka: true #这个是是否把自己作为客户端注册进入
     fetch-registry: false #从Eureka Server获取注册信息

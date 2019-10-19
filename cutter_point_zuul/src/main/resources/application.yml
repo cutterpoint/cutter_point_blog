@@ -14,7 +14,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true #从Eureka Server获取注册信息
     service-url:
-      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
+      defaultZone: http://192.168.0.104:8761/cutter-point-eureka/eureka/
   instance:
     appname: cutter-point-zuul
 
