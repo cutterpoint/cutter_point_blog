@@ -1,7 +1,10 @@
 package com.cutter.point.blog.web.constrant;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,15 +15,48 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  **/
 @Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class BlogWebYmlConstrant {
 
-    @Value(value = "${server.servlet.context-path}")
     public static String contextPath;
-    @Value(value = "${BLOG.file.readUrl}")
+//    @Value(value = "${BLOG.file.readUrl}")
     public static String readUrl;
-    @Value(value = "${BLOG.file.writeUrl}")
     public static String writeUrl;
-    @Value(value = "${BLOG.file.getImageUrl}")
-    public static String getImageUrl;
+    public static String imageUrl;
 
+    public String getContextPath() {
+        return contextPath;
+    }
+
+    @Value(value = "${server.servlet.context-path}")
+    public void setContextPath(String contextPath) {
+        BlogWebYmlConstrant.contextPath = contextPath;
+    }
+
+    public String getReadUrl() {
+        return readUrl;
+    }
+
+    @Value(value = "${BLOG.file.readUrl}")
+    public void setReadUrl(String readUrl) {
+        BlogWebYmlConstrant.readUrl = readUrl;
+    }
+
+    public String getWriteUrl() {
+        return writeUrl;
+    }
+
+    @Value(value = "${BLOG.file.writeUrl}")
+    public void setWriteUrl(String writeUrl) {
+        BlogWebYmlConstrant.writeUrl = writeUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    @Value(value = "${BLOG.file.imageUrl}")
+    public void setImageUrl(String imageUrl) {
+        BlogWebYmlConstrant.imageUrl = imageUrl;
+    }
 }

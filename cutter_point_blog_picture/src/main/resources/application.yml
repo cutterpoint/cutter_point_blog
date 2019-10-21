@@ -12,8 +12,8 @@ file:
 #  upload:
 #    path: D:/mogu_blog/data
   #单个文件的大小M
-  size: 256
-  fileBasePath: C:\Users\xiaof\Desktop\myblog\filestore
+  size: 50
+  fileBasePath: H:\7-jsdevelop\1-filestore
 
 #spring
 spring:
@@ -57,7 +57,7 @@ eureka:
     healthcheck:
       enabled: false
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/cutter-point-eureka/eureka/
+      defaultZone: http://192.168.0.104:8761/cutter-point-eureka/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
@@ -105,7 +105,7 @@ audience:
     
 ####### 日志输出 #########
 logging:
-  file: C:/Users/xiaof/Desktop/myblog/log/picture.log
+  file: ./log/picture.log
   level:
     root: info
     org.springframework.web: info

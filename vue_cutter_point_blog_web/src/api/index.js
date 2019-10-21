@@ -15,6 +15,7 @@ export function getBlogByLevelAjax (params) {
   return $.ajax({
     url: process.env.WEB_API + '/index/getBlogByLevel',
     type: 'GET',
+    async: false,
     dataType:'json', //返回的数据格式：
     data: params
   });

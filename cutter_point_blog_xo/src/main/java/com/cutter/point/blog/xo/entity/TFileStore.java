@@ -1,6 +1,7 @@
 package com.cutter.point.blog.xo.entity;
 
-import com.cutter.point.blog.base.entity.ModelDto;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.cutter.point.blog.base.entity.SuperEntity;
 
 import java.util.Date;
 
@@ -11,7 +12,8 @@ import java.util.Date;
  * @Date 2019/10/14 22:55
  * @Version 1.0
  **/
-public class TFileStore extends ModelDto {
+@TableName("t_file_store")
+public class TFileStore extends SuperEntity<TFileStore> {
 
     private String uid;
     private String fileOldName;
@@ -20,7 +22,7 @@ public class TFileStore extends ModelDto {
     private String fileExpandedName;
     private Long filePosition;
     private Integer fileSize;
-    private String key;
+    private String keyName;
     private String keyType;
     private int status;
     private Date createTime;
@@ -82,12 +84,12 @@ public class TFileStore extends ModelDto {
         this.fileSize = fileSize;
     }
 
-    public String getKey() {
-        return key;
+    public String getKeyName() {
+        return keyName;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setKeyName(String keyName) {
+        this.keyName = keyName;
     }
 
     public String getKeyType() {

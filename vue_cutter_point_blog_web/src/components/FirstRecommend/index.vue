@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <div class="carousel-wrap" id="carousel"  @mouseenter="inDiv" @mouseleave="outDiv">
-      <span v-show="isShow" class="left" @click="leftChange"><</span>
+      <span v-show="isShow" class="left" @click="leftChange"></span>
       <span v-show="isShow" class="right" @click="rightChange">></span>
       <transition-group tag="ul" class="slide-ul" name="list">
         <li
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { getBlogByLevel } from "../../api/index";
+import { getBlogByLevel,getBlogByLevelAjax } from "../../api/index";
 export default {
   name: "FirstRecommend",
   data() {
@@ -53,12 +53,17 @@ export default {
     this.$nextTick(() => {
       this.timer = setInterval(() => {
         this.autoPlay();
-      }, 4000);
+      }, 3000);
     });
 
-    var params = new URLSearchParams();
-    params.append("level", 1);
-    getBlogByLevel(params).then(response => {
+    // var params = new URLSearchParams();
+    // params.append("level", 1);
+    // getBlogByLevel(params).then(response => {
+    //   this.slideList = response.data.records;
+    // });
+// debugger;
+    var levelparams = {"level":1};
+    getBlogByLevelAjax(levelparams).then(response => {
       this.slideList = response.data.records;
     });
   },

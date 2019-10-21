@@ -1,8 +1,9 @@
-package com.cutter.point.blog.utils;
+package com.cutter.point.blog.picture.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName SpringContextUtil
@@ -11,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
  * @Date 2019/10/10 23:00
  * @Version 1.0
  **/
+@Component
 public class SpringContextUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;

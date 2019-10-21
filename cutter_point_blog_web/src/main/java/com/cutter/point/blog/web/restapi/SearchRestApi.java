@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSON;
 import com.cutter.point.blog.xo.entity.TFileStore;
+import com.cutter.point.blog.xo.service.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,6 @@ import com.cutter.point.blog.web.global.SysConf;
 import com.cutter.point.blog.xo.entity.Blog;
 import com.cutter.point.blog.xo.entity.BlogSort;
 import com.cutter.point.blog.xo.entity.Tag;
-import com.cutter.point.blog.xo.service.BlogSearchService;
-import com.cutter.point.blog.xo.service.BlogService;
-import com.cutter.point.blog.xo.service.BlogSortService;
-import com.cutter.point.blog.xo.service.TagService;
-import com.cutter.point.blog.xo.service.WebVisitService;
 import com.cutter.point.blog.base.enums.EBehavior;
 import com.cutter.point.blog.base.enums.EStatus;
 
@@ -70,6 +66,9 @@ public class SearchRestApi {
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
+
+	@Autowired
+	private TFileStoreService tFileStoreService;
 
 	private static Logger log = LogManager.getLogger(SearchRestApi.class);
 
@@ -239,11 +238,7 @@ public class SearchRestApi {
 		String pictureList = null;
 
 		if (fileUids != null) {
-//			pictureList = this.pictureFeignClient.getPicture(fileUids.toString(), ",");
-			TFileStore tFileStore = new TFileStore();
-			tFileStore.setUid(fileUids.toString());
-			List<TFileStore> tFileStores = (List<TFileStore>) tFileStore.qry();
-//			String pictureList = this.pictureFeignClient.getPicture(admin.getAvatar(), ",");
+			List<TFileStore> tFileStores = tFileStoreService.getTFileStoreByUid(fileUids.toString());
 			pictureList = JSON.toJSONString(tFileStores);
 		}
 		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);

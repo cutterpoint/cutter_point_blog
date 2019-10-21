@@ -305,7 +305,7 @@ public class BlogContentRestApi {
 		//获取标题图片
 		if(blog != null && !StringUtils.isEmpty(blog.getFileUid())) {
 			//通过uid获取对应的文件信息
-			String result = BlogWebYmlConstrant.getImageUrl + "?uid=" + blog.getFileUid();
+			String result = BlogWebYmlConstrant.imageUrl + "?uid=" + blog.getFileUid();
 			List<String> picList = WebUtils.getPicture(result);
 			log.info("##### picList: #######" + picList);
 			if(picList != null && picList.size() > 0) {

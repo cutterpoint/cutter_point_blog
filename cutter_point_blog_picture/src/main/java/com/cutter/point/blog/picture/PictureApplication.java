@@ -1,5 +1,6 @@
 package com.cutter.point.blog.picture;
 
+import com.cutter.point.blog.picture.listener.ApplicationEventListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration;
@@ -19,14 +20,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableEurekaClient
-@ComponentScan(basePackages = {
-        "com.cutter.point.blog.picture.config",
-        "com.cutter.point.blog.picture.restapi",
-        "com.cutter.point.blog.picture.service"})
+//@ComponentScan
 public class PictureApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PictureApplication.class, args);
+
+		SpringApplication app = new SpringApplication(PictureApplication.class);
+		app.addListeners(new ApplicationEventListener());
+		app.run(args);
 	}
 	
 //    private CorsConfiguration buildConfig() {

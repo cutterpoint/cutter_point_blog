@@ -1,11 +1,7 @@
 package com.cutter.point.blog.web.restapi;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -308,27 +304,22 @@ public class IndexRestApi {
 		WebConfig webConfig = webConfigService.getOne(queryWrapper);
 		
 		if(StringUtils.isNotEmpty(webConfig.getLogo())) {
-			String pictureList = BlogWebYmlConstrant.getImageUrl + "?uid=" + webConfig.getLogo();
-			webConfig.setPhotoList(WebUtils.getPicture(pictureList));
+			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + webConfig.getLogo();
+			webConfig.setPhotoList(Arrays.asList(pictureList));
 		}
 		
 		//获取支付宝收款二维码
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getAliPay())) {
 			String pictureList = UrlUtil.getImageUrl(webConfig.getAliPay());
-			if(WebUtils.getPicture(pictureList).size() > 0) {
-				webConfig.setAliPayPhoto(WebUtils.getPicture(pictureList).get(0));	
-			}
+			webConfig.setAliPayPhoto(pictureList);
 			
 		}
 		//获取微信收款二维码
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getWeixinPay())) {
 			String pictureList = UrlUtil.getImageUrl(webConfig.getWeixinPay());
-			if(WebUtils.getPicture(pictureList).size() > 0) {
-				webConfig.setWeixinPayPhoto(WebUtils.getPicture(pictureList).get(0));	
-			}
-			
+			webConfig.setWeixinPayPhoto(pictureList);
 		}
-		
+
 		return ResultUtil.result(SysConf.SUCCESS, webConfig);
 	}
 	

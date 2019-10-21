@@ -23,8 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableFeignClients("com.cutter.point.blog.web.feign")
 @ComponentScan(basePackages = {
         "com.cutter.point.blog.config",
-        "com.cutter.point.blog.web.config",
-        "com.cutter.point.blog.web.restapi",
+        "com.cutter.point.blog.web",
         "com.cutter.point.blog.xo.service"})
 public class WebApplication {
 

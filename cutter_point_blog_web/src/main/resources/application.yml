@@ -27,7 +27,7 @@ BLOG:
   file:
     readUrl: http://cutter-point-blog-picture/cutter-point-blog-picture/file/read
     writeUrl: http://cutter-point-blog-picture/cutter-point-blog-picture/file/write
-    getImageUrl: /file/getImageByUid
+    imageUrl: /file/getImageByUid
         
 
 #spring
@@ -81,10 +81,10 @@ spring:
   
   #redis
   redis:
-    host: 127.0.0.1 #redis的主机ip
-    port: 17399
+    host: 192.168.0.104 #redis的主机ip
+    port: 6379
     database: 15
-    password: ZTE$soft987
+    password: redis
 
 #eureka相关配置
 eureka:

@@ -4,14 +4,12 @@ import com.cutter.point.blog.picture.config.FileConfig;
 import com.cutter.point.blog.picture.entity.TFileStore;
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * @ClassName FileWriterUtil
@@ -55,6 +53,7 @@ public class FileWriterUtil {
         fileInfo.setFileUrl(curFile.getAbsolutePath());
         fileInfo.setFilePosition(curPosition);
         fileInfo.setFileSize(data.length);
+        fileInfo.setUid(UUID.randomUUID().toString());
         //写入文件内容
         synchronized(mappedByteBuffer) {
             mappedByteBuffer.put(data);
@@ -82,7 +81,7 @@ public class FileWriterUtil {
 
         //多线程情况下使用
         synchronized (this) {
-            String dirPath = FileConfig.getFileBasePath() + File.separator + currentDateToString("yyyy-MM-dd");
+            String dirPath = FileConfig.fileBasePath + File.separator + currentDateToString("yyyy-MM-dd");
             File file = new File(dirPath);
             //判断文件夹是否存在
             if (!file.exists()) {
@@ -98,7 +97,7 @@ public class FileWriterUtil {
                 //恰好是之前创建的文件
                 //判断文件大小
                 File fileTarget = files[0];
-                if (fileTarget.length() >= FileConfig.getMaxFileSize()) {
+                if (fileTarget.length() >= FileConfig.maxFileSize) {
                     // file size over setting
                     // temp文件大于最大長度时,创建新的文件
                     String fileName = fileTarget.getAbsolutePath();// temp
@@ -109,6 +108,22 @@ public class FileWriterUtil {
                 } else {
                     curFile = file;
                 }
+            }
+
+            //获取mapped对象
+            try {
+                randomAccessFile = new RandomAccessFile(curFile, "rw");
+                //获取通道
+                fileChannel = randomAccessFile.getChannel();
+                //设置位置
+                fileChannel.position(0);
+                curPosition = 0;
+                mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, FileConfig.maxFileSize);
+            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+                logger.error(e.getMessage(), e);
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
             }
         }
         return mappedByteBuffer;

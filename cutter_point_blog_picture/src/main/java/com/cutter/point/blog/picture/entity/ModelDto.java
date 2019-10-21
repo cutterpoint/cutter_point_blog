@@ -1,12 +1,11 @@
-package com.cutter.point.blog.base.entity;
+package com.cutter.point.blog.picture.entity;
 
 import com.cutter.point.blog.base.annotation.Column;
+import com.cutter.point.blog.picture.util.SpringContextUtil;
 import com.cutter.point.blog.utils.NameChangeUtil;
-import com.cutter.point.blog.utils.SpringContextUtil;
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -36,16 +35,16 @@ public abstract class ModelDto {
             "java.lang.Character", "java.lang.Float", "java.lang.Double",
             "java.lang.Long", "java.lang.Short", "java.lang.Byte", "java.util.Date", "java.math.BigDecimal" };
 
-    private JdbcTemplate jdbcTemplate = (JdbcTemplate) SpringContextUtil.getBean("jdbcTemplate");
+    private JdbcTemplate jdbcTemplate = (JdbcTemplate) SpringContextUtil.getBean("jdbcTemplate");;
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate = (NamedParameterJdbcTemplate) SpringContextUtil.getBean("namedParameterJdbcTemplate");
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate = (NamedParameterJdbcTemplate) SpringContextUtil.getBean("namedParameterJdbcTemplate");;
 
 //    private JdbcTemplate jdbcTemplate;
 //    private NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(JdbcUtil.getZhcxDataSource());
     /**
      * 新增
      */
-    public void add() throws Exception {
+    public void add() {
         //插入当前对象
         //使用反射机制获取当前类的所有字段
         Field[] fields = this.getClass().getDeclaredFields();
@@ -53,7 +52,7 @@ public abstract class ModelDto {
         //获取要插入的表名,去掉末尾model这5个字符
         int nameLength = this.getClass().getSimpleName().length();
         String tableName = this.getClass().getSimpleName();
-        tableName = Character.toLowerCase(tableName.charAt(0)) + tableName.substring(1);
+//        tableName = Character.toLowerCase(tableName.charAt(0)) + tableName.substring(1);
         //转下划线
         tableName = NameChangeUtil.camelToUnderLine(tableName);
         //匹配基础类型
@@ -63,94 +62,122 @@ public abstract class ModelDto {
         }
 
         //组装sql
-        StringBuffer sql = new StringBuffer("insert into " + tableName + " values(");
-        for(int i = 0; i < fieldSize; ++i) {
-            Field field = fields[i];
-            Column fieldColumn = field.getAnnotation(Column.class);
-            if(fieldColumn == null) {
-                sql.append(" :" + fields[i].getName() + ",");
-            } else {
-                String fieldName = fieldColumn.name() == null ? field.getName() : fieldColumn.name();
-                sql.append(" :" + fieldName + ",");
-            }
-        }
-        //去除最后的逗号
-        sql.deleteCharAt(sql.length() - 1).append(")");
+        StringBuffer inserSql = new StringBuffer("insert into " + tableName + " ( ");
+        StringBuffer valueSql = new StringBuffer(" values( ");
+        Map paramMap = null;
+        try {
+            for(int i = 0; i < fieldSize; ++i) {
+                Field field = fields[i];
 
-        //进行数据插入
-        Map paramMap = new HashMap();
-        //设置字段
-        for(int i = 0; i < fieldSize; ++i) {
-            //注意sql中变量参数是从1开始的
-            //在反射对象中设置 accessible 标志允许具有足够特权的复杂应用程序
-            //（比如 Java Object Serialization 或其他持久性机制）
-            //以某种通常禁止使用的方式来操作对象
-            fields[i].setAccessible(true);
-            Field field = fields[i];
-            Column fieldColumn = field.getAnnotation(Column.class);
-            for(int j = 0; j < types1.length; ++j) {
+                //如果字段为空，那么跳过
+                field.setAccessible(true);
+                if (field.get(this) == null) {
+                    continue;
+                }
+
+                Column fieldColumn = field.getAnnotation(Column.class);
+
                 if(fieldColumn == null) {
-                    if(fields[i].getType().getName().equalsIgnoreCase(types1[j])
-                            || fields[i].getType().getName().equalsIgnoreCase(types2[j])) {
-                        //如果匹配到以上几个类型，获取数据不为空
-                        if(fields[i].get(this) != null
-                                && !"".equals(fields[i].get(this))
-                                && !"null".equals(fields[i].get(this))) {
-//							System.out.println(fields[i].getName() + "》值：" + fields[i].get(this));
-                            if(types1[j].equals("java.util.Date")) {
-                                Date date = (Date) fields[i].get(this);
-                                paramMap.put(fields[i].getName(), new java.sql.Date(date.getTime()));
-                            } else {
-                                paramMap.put(fields[i].getName(), fields[i].get(this));
-                            }
-                        } else {
-                            //如果是空
-                            paramMap.put(fields[i].getName(), null);
-                        }
-                    }
+                    inserSql.append(NameChangeUtil.camelToUnderLine(fields[i].getName()) + ",");
+                    valueSql.append(" :" + fields[i].getName() + ",");
                 } else {
-                    //如果不为空，根据注解填写对应的信息
+                    if (!fieldColumn.isUse()) {
+                        continue;
+                    }
                     String fieldName = fieldColumn.name() == null ? field.getName() : fieldColumn.name();
-                    if(fields[i].getType().getName().equalsIgnoreCase(types1[j])
-                            || fields[i].getType().getName().equalsIgnoreCase(types2[j])) {
-                        //如果匹配到以上几个类型，获取数据不为空
-                        if(fields[i].get(this) != null
-                                && !"".equals(fields[i].get(this))
-                                && !"null".equals(fields[i].get(this))) {
-//							System.out.println(fields[i].getName() + "》值：" + fields[i].get(this));
-                            if(types1[j].equals("java.util.Date")) {
-                                Date date = (Date) fields[i].get(this);
-                                paramMap.put(fieldName, new java.sql.Date(date.getTime()));
-                            } else {
-                                paramMap.put(fieldName, fields[i].get(this));
-                            }
-                        } else {
-                            //如果是空
-                            //判断主键是否为空，如果为空，那么要根据对应的值查序列
-                            if(fieldColumn.isPrimary()) {
-                                //如果是主键，并且为空
-                                String seqName = "seq_" + tableName;
-                                String seqSql = "SELECT " + seqName + ".Nextval as seqValue FROM dual ";
-                                Map retValue = namedParameterJdbcTemplate.queryForMap(seqSql, new HashMap<>());
-                                paramMap.put(fieldName, MapUtils.getString(retValue, "seqValue"));
-                            } else {
+                    inserSql.append(fieldName + ",");
+                    valueSql.append(" :" + fieldName + ",");
+                }
+            }
+            //去除最后的逗号
+            inserSql.deleteCharAt(inserSql.length() - 1).append(")");
+            valueSql.deleteCharAt(valueSql.length() - 1).append(")");
 
-                                paramMap.put(fieldName, null);
+            //进行数据插入
+            paramMap = new HashMap();
+            //设置字段
+            for(int i = 0; i < fieldSize; ++i) {
+                //注意sql中变量参数是从1开始的
+                //在反射对象中设置 accessible 标志允许具有足够特权的复杂应用程序
+                //（比如 Java Object Serialization 或其他持久性机制）
+                //以某种通常禁止使用的方式来操作对象
+                fields[i].setAccessible(true);
+                Field field = fields[i];
+                Column fieldColumn = field.getAnnotation(Column.class);
+
+                if (field.get(this) == null) {
+                    continue;
+                }
+
+                for(int j = 0; j < types1.length; ++j) {
+                    if(fieldColumn == null) {
+                        if(fields[i].getType().getName().equalsIgnoreCase(types1[j])
+                                || fields[i].getType().getName().equalsIgnoreCase(types2[j])) {
+                            //如果匹配到以上几个类型，获取数据不为空
+                            if(fields[i].get(this) != null
+                                    && !"".equals(fields[i].get(this))
+                                    && !"null".equals(fields[i].get(this))) {
+                                //							System.out.println(fields[i].getName() + "》值：" + fields[i].get(this));
+                                if(types1[j].equals("java.util.Date")) {
+                                    Date date = (Date) fields[i].get(this);
+                                    paramMap.put(fields[i].getName(), new java.sql.Date(date.getTime()));
+                                } else {
+                                    paramMap.put(fields[i].getName(), fields[i].get(this));
+                                }
+                            } else {
+                                //如果是空
+                                paramMap.put(fields[i].getName(), null);
+                            }
+                        }
+                    } else {
+                        if (!fieldColumn.isUse()) {
+                            continue;
+                        }
+                        //如果不为空，根据注解填写对应的信息
+                        String fieldName = fieldColumn.name() == null ? field.getName() : fieldColumn.name();
+                        if(fields[i].getType().getName().equalsIgnoreCase(types1[j])
+                                || fields[i].getType().getName().equalsIgnoreCase(types2[j])) {
+                            //如果匹配到以上几个类型，获取数据不为空
+                            if(fields[i].get(this) != null
+                                    && !"".equals(fields[i].get(this))
+                                    && !"null".equals(fields[i].get(this))) {
+                                //							System.out.println(fields[i].getName() + "》值：" + fields[i].get(this));
+                                if(types1[j].equals("java.util.Date")) {
+                                    Date date = (Date) fields[i].get(this);
+                                    paramMap.put(fieldName, new java.sql.Date(date.getTime()));
+                                } else {
+                                    paramMap.put(fieldName, fields[i].get(this));
+                                }
+                            } else {
+                                //如果是空
+                                //判断主键是否为空，如果为空，那么要根据对应的值查序列
+                                if(fieldColumn.isPrimary()) {
+                                    //如果是主键，并且为空
+                                    String seqName = "seq_" + tableName;
+                                    String seqSql = "SELECT " + seqName + ".Nextval as seqValue FROM dual ";
+                                    Map retValue = namedParameterJdbcTemplate.queryForMap(seqSql, new HashMap<>());
+                                    paramMap.put(fieldName, MapUtils.getString(retValue, "seqValue"));
+                                } else {
+
+                                    paramMap.put(fieldName, null);
+                                }
                             }
                         }
                     }
                 }
             }
+        } catch (IllegalAccessException e) {
+            logger.error(e.getMessage(), e);
         }
 
         //执行sql，提交事务
-        namedParameterJdbcTemplate.update(sql.toString(), paramMap);
+        namedParameterJdbcTemplate.update(inserSql.append(valueSql).toString(), paramMap);
     }
 
     private String getTableName() {
         int nameLength = this.getClass().getSimpleName().length();
-        String tableName = this.getClass().getSimpleName().substring(0, nameLength - 3);
-        tableName = Character.toLowerCase(tableName.charAt(0)) + tableName.substring(1);
+        String tableName = this.getClass().getSimpleName();
+//        tableName = Character.toLowerCase(tableName.charAt(0)) + tableName.substring(1);
         //转下划线
         tableName = NameChangeUtil.camelToUnderLine(tableName);
 
@@ -271,6 +298,9 @@ public abstract class ModelDto {
                     }
 
                 } else {
+                    if (!column.isUse()) {
+                        continue;
+                    }
                     //如果不为空，根据注解填写对应的信息
                     if(column.canChange()) {
                         if(column.isPrimary()) {
@@ -329,6 +359,7 @@ public abstract class ModelDto {
                 Field field = fields[i];
                 field.setAccessible(true); //解放操作权限
                 Column column = field.getAnnotation(Column.class);
+
                 if(column == null) {
                     //如果为空，那么就按照原来的名字组装
                     if(field.get(this) != null
@@ -340,6 +371,9 @@ public abstract class ModelDto {
                     }
 
                 } else {
+                    if (!column.isUse()) {
+                        continue;
+                    }
                     //如果不为空，根据注解填写对应的信息
                     if(column.canChange()) {
                         if(column.isPrimary()) {
@@ -358,6 +392,7 @@ public abstract class ModelDto {
             //设置参数,先是待更新对象，然后是条件参数
             //获取结果
             res = jdbcTemplate.query(sql.toString(), paramList.toArray(), new BeanPropertyRowMapper(this.getClass()));
+
         } catch (IllegalAccessException e) {
             logger.error(e.getMessage(), e);
         } catch (SQLException e) {

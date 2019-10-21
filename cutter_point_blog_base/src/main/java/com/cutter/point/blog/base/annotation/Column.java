@@ -58,4 +58,13 @@ public @interface Column {
 	 * @date: 2019/1/30 15:48
 	 */
 	boolean canChange() default true;
+
+	/**
+	 *
+	 * @program: com.ztesoft.interfaces.supplyChain.annotation.Column
+	 * @description: 这个字段是否用到数据库中
+	 * @auther: xiaof
+	 * @date: 2019年10月14日17:49:51
+	 */
+	boolean isUse() default true;
 }

@@ -1,7 +1,5 @@
 package com.cutter.point.blog.picture.entity;
 
-import com.cutter.point.blog.base.entity.ModelDto;
-
 import java.util.Date;
 
 /**
@@ -26,7 +24,7 @@ public class TFileStore extends ModelDto {
 //    `file_size` int(20) DEFAULT '0' COMMENT '文件大小',
     private long fileSize;
 //    `key` varchar(255) comment '文件信息关联key',
-    private String key;
+    private String keyName;
 //    `key_type` varchar(64) comment '文件类型',
     private String keyType;
 //    `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态',
@@ -61,11 +59,11 @@ public class TFileStore extends ModelDto {
     }
 
     public String getKey() {
-        return key;
+        return keyName;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.keyName = key;
     }
 
     public String getKeyType() {
