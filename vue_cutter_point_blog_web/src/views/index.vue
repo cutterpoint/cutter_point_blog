@@ -133,6 +133,7 @@ import CdTop from "../components/CdTop";
 import {
   getBlogByLevel,
   getNewBlog,
+  getNewBlogAjax,
   getHotBlog,
   getHotTag,
   recorderVisitPage,
@@ -202,22 +203,16 @@ export default {
     // });
   },
   created() {
-    debugger;
-    // var secondParams = new URLSearchParams();
-    // secondParams.append("level", 2);
-    // getBlogByLevel(secondParams).then(response => {
-    //   this.secondData = response.data.records;
-    // }); 
+    //加载二级博客，一级博客右边
     var levelparams = {"level":2};
-    var levelResult;
     getBlogByLevelAjax(levelparams).then(response => {
-      levelResult = response.data.records;
+      this.secondData = response.data.records;
     });
-    
-    this.secondData = levelResult;
 
     // 获取最新博客
+    // debugger;
     this.newBlogList();
+    //记录访问网站记录
     var params = new URLSearchParams();
     params.append("pageName", "INDEX");
     recorderVisitPage(params).then(response => {});
@@ -252,15 +247,22 @@ export default {
 
     //最新博客列表
     newBlogList() {
-      var params = new URLSearchParams();
-      params.append("currentPage", this.currentPage);
-      params.append("pageSize", this.pageSize);
-      getNewBlog(params).then(response => {
+      // var params = new URLSearchParams();
+      // params.append("currentPage", this.currentPage);
+      // params.append("pageSize", this.pageSize);
+      // getNewBlog(params).then(response => {
+      //   if (response.code == "success") {
+      //     this.newBlogData = response.data.records;
+      //     this.total = response.data.total;
+      //     this.pageSize = response.data.size;
+      //     this.currentPage = response.data.current;
+      //   }
+      // });
+      var params = {"currentPage":this.currentPage,"pageSize":this.pageSize};
+      getNewBlogAjax(params).then(response => {
         if (response.code == "success") {
-          this.newBlogData = response.data.records;
-          this.total = response.data.total;
-          this.pageSize = response.data.size;
-          this.currentPage = response.data.current;
+          var datas = response.data;
+          this.newBlogData = datas.records;
         }
       });
     },

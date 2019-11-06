@@ -36,6 +36,9 @@ spring:
     default-domain: cutter-point-blog-web
   thymeleaf:
     cache: true   #关闭缓存
+  devtools:
+    restart:
+      enabled: true
   application:
     name: cutter-point-blog-web
   # DATABASE CONFIG
@@ -137,4 +140,4 @@ logging:
 #  file: D:/mogu_blog/logs/web/web.log
   level:
     root: info
-    org.springframework.web: info
+    org.springframework.web: debug

@@ -29,6 +29,17 @@ export function getNewBlog (params) {
   })
 }
 
+export function getNewBlogAjax (params) {
+  return $.ajax({
+    url: process.env.WEB_API + '/index/getNewBlog',
+    type: 'GET',
+    async: false,
+    dataType:'json', //返回的数据格式：
+    data: params
+  });
+}
+
+
 export function getBlogByTime (params) {
   return request({
     url: process.env.WEB_API + '/index/getBlogByTime',
@@ -75,6 +86,17 @@ export function getWebConfig (params) {
     method: 'get',
     params
   })
+}
+
+export function getWebConfigAjax (params) {
+  //get请求 通过推荐等级获取博客列表
+  return $.ajax({
+    url: process.env.WEB_API + '/index/getWebConfig',
+    type: 'GET',
+    async: false,
+    dataType:'json', //返回的数据格式：
+    data: params
+  });
 }
 
 export function recorderVisitPage (params) {

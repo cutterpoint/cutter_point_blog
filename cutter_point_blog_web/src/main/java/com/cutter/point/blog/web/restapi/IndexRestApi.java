@@ -21,7 +21,6 @@ import com.cutter.point.blog.utils.IpUtils;
 import com.cutter.point.blog.utils.JsonUtils;
 import com.cutter.point.blog.utils.ResultUtil;
 import com.cutter.point.blog.utils.StringUtils;
-import com.cutter.point.blog.utils.WebUtils;
 import com.cutter.point.blog.web.feign.PictureFeignClient;
 import com.cutter.point.blog.web.global.SQLConf;
 import com.cutter.point.blog.web.global.SysConf;
@@ -360,12 +359,7 @@ public class IndexRestApi {
 				tagUids.add(item.getTagUid());
 			}
 		});
-		String pictureList = null;
-		
-//		if(fileUids != null && !StringUtils.isEmpty(fileUids.toString())) {
-//			pictureList = this.pictureFeignClient.getPicture(fileUids.toString(), ",");
-//		}
-//		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);
+
 		Collection<BlogSort> sortList = new ArrayList<>();
 		Collection<Tag> tagList = new ArrayList<>();
 		if (sortUids.size() > 0) {

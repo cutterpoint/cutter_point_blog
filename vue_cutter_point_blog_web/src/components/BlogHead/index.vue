@@ -9,7 +9,7 @@
       </h2>
       <ul id="starlist" :style="showHead?'display: block':''">
         <li>
-          <a href="javascript:void(0);" @click="goTo('/')">网站首页</a>
+          <a href="javascript:void(0);" @click="goTo('/')">首页</a>
         </li>
         <li>
           <a href="javascript:void(0);" @click="goTo('/about')">关于我</a>

@@ -61,7 +61,7 @@ export default {
     // getBlogByLevel(params).then(response => {
     //   this.slideList = response.data.records;
     // });
-// debugger;
+debugger;
     var levelparams = {"level":1};
     getBlogByLevelAjax(levelparams).then(response => {
       this.slideList = response.data.records;
