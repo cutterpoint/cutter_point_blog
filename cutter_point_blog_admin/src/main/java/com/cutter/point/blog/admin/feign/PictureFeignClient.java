@@ -1,0 +1,38 @@
+package com.cutter.point.blog.admin.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.moxi.mogublog.admin.config.FeignConfiguration;
+
+/**
+ * mogu_picture相关接口
+ * @author xiaof
+ *
+ */
+
+@FeignClient(name = "mogu-picture", url = "http://localhost:8602/", configuration = FeignConfiguration.class)
+public interface PictureFeignClient {
+
+
+	/**
+	 * 获取文件的信息接口
+	 @ApiImplicitParam(name = "fileIds", value = "fileIds", required = false, dataType = "String"),
+	 @ApiImplicitParam(name = "code", value = "分割符", required = false, dataType = "String")
+	  * @return
+	 */
+//	@RequestMapping(value = "/cutter-point-blog-picture/file/getPicture", method = RequestMethod.GET)
+//	public String getPicture(@RequestParam("fileIds") String fileIds, @RequestParam("code") String code);
+
+	@RequestMapping(value = "/cutter-point-blog-picture/file/read", method = RequestMethod.GET)
+	public byte[] read(@RequestParam(required = true) String filePath, @RequestParam(required = true) long position, @RequestParam(required = true) int msgLength);
+
+	@RequestMapping(value = "/cutter-point-blog-picture/file/write", method = RequestMethod.GET)
+	public String write(@RequestBody byte[] data);
+
+	@RequestMapping(value = "/cutter-point-blog-picture/file/hello", method = RequestMethod.GET)
+	public String hello();
+}

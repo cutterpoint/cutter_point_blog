@@ -51,7 +51,7 @@
         <module>cutter_point_blog_utils</module>
         <module>cutter_point_blog_base</module>
         <module>cutter_point_blog_xo</module>
-        <!--<module>mogu_admin</module>-->
+        <module>cutter_point_blog_admin</module>
         <module>cutter_point_blog_web</module>
         <module>cutter_point_blog_picture</module>
         <module>cutter_point_eureka</module>
