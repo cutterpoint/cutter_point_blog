@@ -28,7 +28,7 @@ export function deleteAdmin(params) {
   return request({
     url: process.env.ADMIN_API + '/admin/delete',
     method: 'post',
-    params
+    data: params
   })
 }
 
@@ -36,6 +36,6 @@ export function restPwdAdmin(params) {
   return request({
     url: process.env.ADMIN_API + '/admin/restPwd',
     method: 'post',
-    params
+    data: params
   })
 }

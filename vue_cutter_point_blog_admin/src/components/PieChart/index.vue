@@ -23,17 +23,17 @@ export default {
     },
     value: {
       type: Array,
-      default: []
+      default: () => []
     },
     tagName: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
 
   data() {
     return {
-      chart: null,
+      chart: null
     }
   },
 

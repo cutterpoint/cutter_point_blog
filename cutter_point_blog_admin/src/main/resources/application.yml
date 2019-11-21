@@ -1,7 +1,8 @@
 #app
 server:
-    port: 8601
-    
+  port: 8601
+  servlet:
+    context-path: /cutter-point-blog-admin
 #阿里大于
 templateCode: SMS_XXXXXX #短信模板编号
 signName: cutter_point博客
@@ -53,7 +54,7 @@ spring:
     password: cutter_point
     url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
-      type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     
     # 初始化大小，最小，最大
     initialSize: 20

@@ -14,6 +14,22 @@ module.exports = {
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
+
+    // allow async-await
+    "generator-star-spacing": "true",
+    "indent": 0,
+    "indent": [0, 0, {"SwitchCase": 0}],
+    "indent": [0, 0],
+    //关闭行末分号提示/报错
+    // "semi": ["error", "always"],
+    "semi": 0,
+    //空格
+    "no-tabs": "off",
+    "no-trailing-spaces": 0,//一行结束后面不要有空格
+    "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
+    "quote-props":[0, "always"],//对象字面量中的属性名是否强制双引号
+    "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
+    "vue/require-prop-types ": "off",
     "vue/max-attributes-per-line": [2, {
       "singleline": 10,
       "multiline": {
@@ -21,11 +37,57 @@ module.exports = {
         "allowFirstLine": false
       }
     }],
-    "vue/name-property-casing": ["error", "PascalCase"],
-    'accessor-pairs': 2,
-    'arrow-spacing': [2, {
-      'before': true,
-      'after': true
+    // "vue/name-property-casing": ["error", "PascalCase"],
+    // 'accessor-pairs': 2,
+    // 'arrow-spacing': [2, {
+    //   'before': true,
+    //   'after': true
+    // }],
+    "vue/html-self-closing": ["error",{
+      "html": {
+        "void": "never",
+        "normal": "any",
+        "component": "any"
+      },
+      "svg": "always",
+      "math": "always"
+    }],
+    // "vue/attributes-order": ["error", {
+    //   "order": [
+    //     "DEFINITION",
+    //     "LIST_RENDERING",
+    //     "CONDITIONALS", 
+    //     "RENDER_MODIFIERS",
+    //     "GLOBAL", 
+    //     "UNIQUE", 
+    //     "TWO_WAY_BINDING", 
+    //     "OTHER_DIRECTIVES", 
+    //     "OTHER_ATTR", 
+    //     "EVENTS", 
+    //     "CONTENT"
+    //   ]
+    // }],
+    "vue/order-in-components": [0, {                  // 组件/实例的选项的顺序
+      "order": [
+        "el",
+        "name",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "data",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
     }],
     'block-spacing': [2, 'always'],
     'brace-style': [2, '1tbs', {
@@ -44,7 +106,6 @@ module.exports = {
     'curly': [2, 'multi-line'],
     'dot-location': [2, 'property'],
     'eol-last': 2,
-    'eqeqeq': [2, 'allow-null'],
     'generator-star-spacing': [2, {
       'before': true,
       'after': true
@@ -54,14 +115,6 @@ module.exports = {
       'SwitchCase': 1
     }],
     'jsx-quotes': [2, 'prefer-single'],
-    'key-spacing': [2, {
-      'beforeColon': false,
-      'afterColon': true
-    }],
-    'keyword-spacing': [2, {
-      'before': true,
-      'after': true
-    }],
     'new-cap': [2, {
       'newIsCap': true,
       'capIsNew': false
@@ -129,7 +182,6 @@ module.exports = {
     'no-sparse-arrays': 2,
     'no-this-before-super': 2,
     'no-throw-literal': 2,
-    'no-trailing-spaces': 2,
     'no-undef': 2,
     'no-undef-init': 2,
     'no-unexpected-multiline': 2,
@@ -158,16 +210,16 @@ module.exports = {
         ':': 'before'
       }
     }],
-    'padded-blocks': [2, 'never'],
-    'quotes': [2, 'single', {
-      'avoidEscape': true,
-      'allowTemplateLiterals': true
-    }],
-    'semi': [2, 'never'],
-    'semi-spacing': [2, {
-      'before': false,
-      'after': true
-    }],
+    // 'padded-blocks': [2, 'never'],
+    // 'quotes': [2, 'single', {
+    //   'avoidEscape': true,
+    //   'allowTemplateLiterals': true
+    // }],
+    // 'semi': [2, 'never'],
+    // 'semi-spacing': [2, {
+    //   'before': false,
+    //   'after': true
+    // }],
     'space-before-blocks': [2, 'always'],
     'space-before-function-paren': [2, 'never'],
     'space-in-parens': [2, 'never'],
@@ -176,12 +228,12 @@ module.exports = {
       'words': true,
       'nonwords': false
     }],
-    'spaced-comment': [2, 'always', {
-      'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
-    }],
+    // 'spaced-comment': [2, 'always', {
+    //   'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
+    // }],
     'template-curly-spacing': [2, 'never'],
     'use-isnan': 2,
-    'valid-typeof': 2,
+    // 'valid-typeof': 2,
     'wrap-iife': [2, 'any'],
     'yield-star-spacing': [2, 'both'],
     'yoda': [2, 'never'],

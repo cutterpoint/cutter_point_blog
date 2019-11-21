@@ -8,28 +8,19 @@
 import CKEDITOR from 'CKEDITOR';
 export default {
   props: ["content"],
-  mounted() {
-    //设置代码块风格为 zenburn
-    CKEDITOR.replace('editor', {height: '275px', width: '100%', toolbar: 'toolbar_Full',codeSnippet_theme: 'zenburn'});
-    this.editor = CKEDITOR.instances.editor;
-    this.editor.setData(this.content); //初始化内容
-  },
-  created() {
-    this.textData = this.content;
+  data() {
+    return {
+      editor: null, //编辑器对象
+      textData: this.content //初始化内容  
+    }    
   },
   watch: {
     content: function() {      
       this.textData = this.content;     
     }
   },
-  data() {
-    return {
-      editor: null, //编辑器对象
-      textData: this.content, //初始化内容  
-    }    
-  },
   methods: {
-    //获取data
+    //获取data 
     getData: function() {
       return this.editor.getData();
     }, 
@@ -43,6 +34,15 @@ export default {
         console.log("CKEditor还未加载");
       }             
     }
+  },
+  mounted() {
+    //设置代码块风格为 zenburn
+    CKEDITOR.replace('editor', { height: '275px', width: '100%', toolbar: 'toolbar_Full', codeSnippet_theme: 'zenburn' });
+    this.editor = CKEDITOR.instances.editor;
+    this.editor.setData(this.content); //初始化内容
+  },
+  created() {
+    this.textData = this.content;
   }
 }
 
