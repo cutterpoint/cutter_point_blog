@@ -1,4 +1,4 @@
-package com.moxi.mogublog.admin.security;
+package com.cutter.point.blog.admin.security;
 
 import java.io.IOException;
 
@@ -123,7 +123,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 		//得到请求头信息authorization信息
 		final String authHeader = request.getHeader(tokenHeader);//设定为Authorization
 		
-		log.error("传递过来的token为: " + authHeader);
+		log.info("传递过来的token为: " + authHeader);
+		System.out.println("传递过来的token为: " + authHeader);
 		
 		//请求头 'Authorization': tokenHead + token
 		if (authHeader != null && authHeader.startsWith(tokenHead)) {

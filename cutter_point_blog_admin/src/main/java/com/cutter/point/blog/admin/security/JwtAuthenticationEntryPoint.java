@@ -1,4 +1,4 @@
-package com.moxi.mogublog.admin.security;
+package com.cutter.point.blog.admin.security;
 
 import java.io.IOException;
 import java.io.Serializable;

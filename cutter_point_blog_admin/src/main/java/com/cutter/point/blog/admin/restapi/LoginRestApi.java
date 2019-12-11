@@ -1,12 +1,6 @@
 package com.cutter.point.blog.admin.restapi;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -169,9 +163,9 @@ public class LoginRestApi {
 		//获取图片
 		if(StringUtils.isNotEmpty(admin.getAvatar())) {
 			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + admin.getAvatar();
-			admin.setPhotoList(WebUtils.getPicture(pictureList));
+			admin.setPhotoList(Arrays.asList(pictureList));
 			
-			List<String> list = WebUtils.getPicture(pictureList);
+			List<String> list = Arrays.asList(pictureList);
 			
 			if(list.size() > 0) {
 				map.put(SysConf.AVATAR, list.get(0));	

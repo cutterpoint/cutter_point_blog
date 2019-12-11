@@ -9,11 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -58,6 +54,11 @@ public class AuthRestApi {
 	
 	@Value(value="${tokenHead}")
 	private String tokenHead;
+
+	@GetMapping("/hello")
+	public void hello() {
+		System.out.println("hello");
+	}
 	
 	@OperationLogger(value="注册管理员")
 	@ApiOperation(value="注册管理员", notes="注册管理员")

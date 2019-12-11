@@ -1,4 +1,4 @@
-package com.moxi.mogublog.admin.security;
+package com.cutter.point.blog.admin.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -97,8 +97,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	                .anyRequest().authenticated();
 	        
 	        // 添加JWT filter
-	        httpSecurity
-	                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+	        httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
 	        // 禁用缓存
 	        httpSecurity.headers().cacheControl();
