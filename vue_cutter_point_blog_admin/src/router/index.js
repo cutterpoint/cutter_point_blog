@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
 import store from '../store'
 import { mapGetters } from "vuex";
 
@@ -65,7 +66,6 @@ export const constantRouterMap = [
         component: () => import('@/views/blog/blogSort'),
         meta: { title: '分类管理', icon: 'sort' }
       },
-
       {
         path: 'collect',
         name: '收藏管理',
@@ -74,7 +74,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/authority',
     component: Layout,
@@ -292,7 +291,8 @@ export const constantRouterMap = [
 ]
 
 const router = new Router({
-  // mode: 'history', //后端支持可开
+  mode: 'history', //后端支持可开
+  base: '/admin/',  //配置路由的根目录
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

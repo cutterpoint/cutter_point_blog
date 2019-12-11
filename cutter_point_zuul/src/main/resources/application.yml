@@ -58,7 +58,35 @@ zuul:
       stripPrefix: false
       path: /cutter-point-blog-picture/**
       serviceId: cutter-point-blog-picture
+    cutter-point-blog-admin:
+      stripPrefix: false
+      path: /cutter-point-blog-admin/**
+      serviceId: cutter-point-blog-admin
     #直接转发ip请求
-#    users:
-#      path: /**
-#      url: http://127.0.0.1:9526/#/
+    users:
+      path: /admin/**
+      url: http://127.0.0.1:9528/admin
+  #  zuul默认对转发的request，会把header清空，为了传递原始的header信息到最终的微服务，在配置加上：(对，你没看错，就是为空，yml格式也是）
+  # 这里是配置过滤的规则，也就是配什么，就拦截什么
+  #  zuul.sensitive-headers=
+  #
+  #  上面是全局的，也可定义局部了，会覆盖全局的设置：
+  #  zuul.routes.xxxapi-xxx.sensitive-headers=
+  #  或者个性化：
+  #  zuul.routes.<xxxapi-xxx>.custom-sensitive-headers=true
+  #  zuul.routes.<xxxapi-xxx>.sensitive-headers=Cookie,Set-Cookie,Authorization
+  sensitive-headers:
+
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
