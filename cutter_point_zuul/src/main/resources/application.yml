@@ -45,27 +45,27 @@ eureka:
 
 #设置zuul请求路由，所有service1的请求进入cutter-point-service1，2的进入cutter-point-http
 zuul:
-  routes:
-    cutter-point-monitor:
-      stripPrefix: false
-      path: /cutter-point-monitor/**
-      serviceId: cutter-point-monitor
-    cutter-point-blog-web:
-      stripPrefix: false
-      path: /cutter-point-blog-web/**
-      serviceId: cutter-point-blog-web
-    cutter-point-picture:
-      stripPrefix: false
-      path: /cutter-point-blog-picture/**
-      serviceId: cutter-point-blog-picture
-    cutter-point-blog-admin:
-      stripPrefix: false
-      path: /cutter-point-blog-admin/**
-      serviceId: cutter-point-blog-admin
-    #直接转发ip请求
-    users:
-      path: /admin/**
-      url: http://127.0.0.1:9528/admin
+#  routes:
+#    cutter-point-monitor:
+#      stripPrefix: false
+#      path: /cutter-point-monitor/**
+#      serviceId: cutter-point-monitor
+#    cutter-point-blog-web:
+#      stripPrefix: false
+#      path: /cutter-point-blog-web/**
+#      serviceId: cutter-point-blog-web
+#    cutter-point-picture:
+#      stripPrefix: false
+#      path: /cutter-point-blog-picture/**
+#      serviceId: cutter-point-blog-picture
+#    cutter-point-blog-admin:
+#      stripPrefix: false
+#      path: /cutter-point-blog-admin/**
+#      serviceId: cutter-point-blog-admin
+#    #直接转发ip请求
+#    admin:
+#      path: /admin/**
+#      url: http://127.0.0.1:9528/admin
   #  zuul默认对转发的request，会把header清空，为了传递原始的header信息到最终的微服务，在配置加上：(对，你没看错，就是为空，yml格式也是）
   # 这里是配置过滤的规则，也就是配什么，就拦截什么
   #  zuul.sensitive-headers=
