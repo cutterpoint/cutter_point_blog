@@ -41,11 +41,11 @@ export default {
   methods: {
     click() {
       if (!screenfull.enabled) {
-        this.$message({
-          message: 'you browser can not work',
-          type: 'warning'
-        })
-        return false
+        // this.$message({
+        //   message: 'you browser can not work',
+        //   type: 'warning'
+        // })
+        // return false
       }
       screenfull.toggle()
     }

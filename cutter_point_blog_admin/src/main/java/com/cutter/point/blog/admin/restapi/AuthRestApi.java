@@ -33,7 +33,6 @@ import io.swagger.annotations.ApiParam;
  * 需放行接口RestApi
  * </p>
  *
- * @author xuzhixiang
  * @since 2018-09-04
  */
 @RestController

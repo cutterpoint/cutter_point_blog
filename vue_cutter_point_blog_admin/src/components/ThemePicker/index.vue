@@ -1,4 +1,5 @@
 <template>
+  <!-- Element-Ui组件颜色选择器 -->
   <el-color-picker
     class="theme-picker"
     popper-class="theme-picker-dropdown"
@@ -18,6 +19,7 @@ export default {
     }
   },
   watch: {
+    //监听事件
     theme(val, oldVal) {
       if (typeof val !== 'string') return
       const themeCluster = this.getThemeCluster(val.replace('#', ''))

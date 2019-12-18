@@ -25,10 +25,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableFeignClients("com.cutter.point.blog.admin.feign")
 @ComponentScan(basePackages = {
         "com.cutter.point.blog.config",
-        "com.cutter.point.blog.admin.log",
-        "com.cutter.point.blog.admin.security",
-        "com.cutter.point.blog.admin.config",
-        "com.cutter.point.blog.admin.restapi",
+        "com.cutter.point.blog.admin",
+//        "com.cutter.point.blog.admin.security",
+//        "com.cutter.point.blog.admin.config",
+//        "com.cutter.point.blog.admin.restapi",
         "com.cutter.point.blog.xo.service",
         "com.cutter.point.blog.utils"
         })

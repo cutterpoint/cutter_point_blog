@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -122,7 +123,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 			throws ServletException, IOException {
 		//得到请求头信息authorization信息
 		final String authHeader = request.getHeader(tokenHeader);//设定为Authorization
-		
+//		final String authHeader = "";
+//		MAPIHttpServletRequestWrapper requestWrapper = null;
+//		if(request instanceof HttpServletRequest) {
+//			HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+//			if("POST".equals(httpServletRequest.getMethod().toUpperCase())){
+//				requestWrapper = new MAPIHttpServletRequestWrapper((HttpServletRequest) request);
+//			}
+//		}
+
 		log.info("传递过来的token为: " + authHeader);
 		System.out.println("传递过来的token为: " + authHeader);
 		
@@ -138,6 +147,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 				log.info("token未过期，刷新token");
 			} else {
 				chain.doFilter(request, response);
+//				if(requestWrapper == null || requestWrapper.getBody() == null) {
+//					chain.doFilter(request, response);
+//				} else {
+//					chain.doFilter(requestWrapper, response);    //替换！
+//				}
 				return;
 			}
 			
@@ -163,7 +177,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 				}
 			}
 		}
-		chain.doFilter(request, response);	
+
+		chain.doFilter(request, response);
+//		if(requestWrapper == null || requestWrapper.getBody() == null) {
+//			chain.doFilter(request, response);
+//		} else {
+//			chain.doFilter(requestWrapper, response);    //替换！
+//		}
 	}
 }
 		

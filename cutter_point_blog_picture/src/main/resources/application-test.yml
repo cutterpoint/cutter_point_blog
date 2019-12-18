@@ -1,53 +1,33 @@
 #app
 server:
-  port: 8601
-  servlet:
-    context-path: /cutter-point-blog-admin
-#阿里大于
-templateCode: SMS_XXXXXX #短信模板编号
-signName: cutter_point博客
+    port: 8602
+    servlet:
+      context-path: /cutter-point-blog-picture
     
-#项目名称
-PROJECT_NAME: cutter_point博客
-
 #Data image url
 data:
   image:
     url: http://localhost:8600/
-#file:
+file:
 #  upload:
-#    path: D:/mogu_blog/data/
-
-moguBlog:
-   email: xiaofengbly@163.com
-
-DEFAULE_PWD: cutter_pointblog
-   
-#博客相关配置
-BLOG:
-  HOT_COUNT: 5 #热门博客数量
-  NEW_COUNT: 15 #最新博客数据
-  FIRST_COUNT: 5 #一级推荐
-  SECOND_COUNT: 2 #二级推荐
-  THIRD_COUNT: 3 #三级推荐
-  FOURTH_COUNT: 5 #四级推荐
-  file:
-    readUrl: http://cutter-point-blog-picture/cutter-point-blog-picture/file/read
-    writeUrl: http://cutter-point-blog-picture/cutter-point-blog-picture/file/write
-    imageUrl: /cutter-point-blog-admin/file/getImageByUid
+#    path: D:/mogu_blog/data
+  #单个文件的大小M
+  size: 50
+  fileBasePath: /home/computer001/blog/filestore
 
 #spring
 spring:
-  jackson:
-    serialization:
-      INDENT_OUTPUT: true
+#  http:
+#    multipart:
+#      max-file-size: 5Mb  # 修改单次文件上传文件大小不能超过5MB
+#      max-request-size: 50Mb # 设置单次文件请求总大小不能超过50MB
   jmx:
-    default-domain: cutter_point_blog_admin
+    default-domain: cutter-point-blog-picture
   thymeleaf:
     cache: true   #关闭缓存
   application:
-    name: cutter-point-blog-admin
-
+    name: cutter-point-blog-picture
+      
   # DATABASE CONFIG
   datasource:
     username: cutter_point
@@ -55,26 +35,12 @@ spring:
     url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    
-    # 初始化大小，最小，最大
-    initialSize: 20
+    initialSize: 5
     minIdle: 5
-    maxActive: 200
-    
-    #连接等待超时时间
+    maxActive: 20
     maxWait: 60000
-    
-    #配置隔多久进行一次检测(检测可以关闭的空闲连接)
     timeBetweenEvictionRunsMillis: 60000
-    
-    #配置连接在池中的最小生存时间
     minEvictableIdleTimeMillis: 300000
-    
-    dbcp:
-      remove-abandoned: true
-      #泄露的连接可以被删除的超时时间（秒），该值应设置为应用程序查询可能执行的最长时间
-      remove-abandoned-timeout: 180
-    
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
@@ -85,28 +51,7 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-  #Solr
-  data:
-    solr:
-      host: http://localhost:8080/solr
-      core: collection1
-      repositories:
-        enabled: true
-  #redis
-  redis:
-    host: 192.168.0.104 #redis的主机ip
-    port: 6379
-    database: 15
-    password: redis
-        
-  rabbitmq:
-    host: 127.0.0.1 #rabbitmq的主机ip
-    port: 5672
-    username: guest
-    password: guest
-
-#eureka相关配置
+    
 eureka:
   client:
     healthcheck:
@@ -120,15 +65,13 @@ eureka:
       zone: ABC      # eureka可以理解的元数据
       lilizhou: BBC  # 不会影响客户端行为
     lease-renewal-interval-in-seconds: 5
-    appname: cutter_point_blog_admin
-# 或者：
-feign.hystrix.enabled: false ## 索性禁用feign的hystrix支持    
-
+    appname: cutter-point-blog-picture
+    
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.cutter.point.blog.xo.entity
+  typeAliasesPackage: com.cutter.point.blog.picture.entity
   global-config:
     # 数据库相关配置
     db-config:
@@ -160,11 +103,10 @@ audience:
   base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
   name: cutterpointblog
   expiresSecond: 3600  #1个小时
-
+    
 ####### 日志输出 #########
 logging:
-#  file: D:/mogu_blog/logs/admin/admin.log
+  file: ./log/picture.log
   level:
     root: info
     org.springframework.web: info
-  

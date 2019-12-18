@@ -73,34 +73,47 @@
 	</dependencies>
 
 	<!--spring boot打包的话需要指定一个唯一的入门-->
-    <build>
-		  <resources>
-		   <resource>
-		       <directory>src/main/java</directory>
-		       <includes>
-		           <include>**/*.xml</include>
-		       </includes>
-		   </resource>
-		   <resource>
-		       <directory>src/main/resources</directory>
-		       <includes>
-		           <include>**.*</include>
-		           <include>**/*.*</include><!-- i18n能读取到 -->
-		            <include>**/*/*.*</include>
-		       </includes>
-		   </resource>
-		 </resources>
-        <plugins>
-            <plugin>
-            	<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-war-plugin</artifactId>
-			    <configuration>
-			        <warName>mogu_picture</warName>
-			        <failOnMissingWebXml>false</failOnMissingWebXml>
-                 	<outputDirectory>webapps</outputDirectory>
-			    </configuration>
-            </plugin>
-        </plugins>
-        <finalName>mogu_picture</finalName>
-    </build>
+<!--    <build>-->
+<!--		  <resources>-->
+<!--		   <resource>-->
+<!--		       <directory>src/main/java</directory>-->
+<!--		       <includes>-->
+<!--		           <include>**/*.xml</include>-->
+<!--		       </includes>-->
+<!--		   </resource>-->
+<!--		   <resource>-->
+<!--		       <directory>src/main/resources</directory>-->
+<!--		       <includes>-->
+<!--		           <include>**.*</include>-->
+<!--		           <include>**/*.*</include>&lt;!&ndash; i18n能读取到 &ndash;&gt;-->
+<!--		            <include>**/*/*.*</include>-->
+<!--		       </includes>-->
+<!--		   </resource>-->
+<!--		 </resources>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--            	<groupId>org.apache.maven.plugins</groupId>-->
+<!--			    <artifactId>maven-war-plugin</artifactId>-->
+<!--			    <configuration>-->
+<!--			        <warName>cutter-point-blog-picture</warName>-->
+<!--			        <failOnMissingWebXml>false</failOnMissingWebXml>-->
+<!--                 	<outputDirectory>webapps</outputDirectory>-->
+<!--			    </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--        <finalName>cutter-point-blog-picture</finalName>-->
+<!--    </build>-->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>cutter-point-blog-picture</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

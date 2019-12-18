@@ -17,6 +17,7 @@ const user = {
     SET_NAME: (state, name) => {
       state.name = name
     },
+    //这里设置相应的store信息，后面可以通过...mapGetters(["sidebar", "avatar"])获取信息
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar
     },

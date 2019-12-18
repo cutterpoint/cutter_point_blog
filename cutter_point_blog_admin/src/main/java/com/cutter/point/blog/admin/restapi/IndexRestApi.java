@@ -42,9 +42,11 @@ public class IndexRestApi {
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String init() {
 		Map<String, Object> map = new HashMap<String, Object>();
-				
+		//博客数
 		Integer blogCount = blogService.getBlogCount(EStatus.ENABLE);
-		Integer commentCount = commentService.getCommentCount(EStatus.ENABLE);					
+		//评论数
+		Integer commentCount = commentService.getCommentCount(EStatus.ENABLE);
+		//每日的访问量
 		Integer visitCount = webVisitService.getWebVisitCount();
 		
 		map.put(SysConf.BLOG_COUNT, blogCount);

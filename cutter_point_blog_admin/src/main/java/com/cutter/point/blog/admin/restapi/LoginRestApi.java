@@ -84,67 +84,67 @@ public class LoginRestApi {
 	public String login(HttpServletRequest request, 
 			@ApiParam(name = "username", value = "用户名或邮箱或手机号", required = false) @RequestParam(name = "username", required = false) String username,
 			@ApiParam(name = "password", value = "密码", required = false) @RequestParam(name = "password", required = false) String password,
-			@ApiParam(name = "isRememberMe", value = "是否记住账号密码", required = false) @RequestParam(name = "isRememberMe", required = false, defaultValue = "0") int isRememberMe){
-			
-		if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+			@ApiParam(name = "isRememberMe", value = "是否记住账号密码", required = false) @RequestParam(name = "isRememberMe", required = false, defaultValue = "0") int isRememberMe) {
+
+		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
 			return ResultUtil.result(SysConf.ERROR, "账号或密码不能为空");
-		}		
-		  Boolean isEmail = CheckUtils.checkEmail(username);
-		  Boolean isMobile = CheckUtils.checkMobileNumber(username);
-	      QueryWrapper<Admin> queryWrapper = new QueryWrapper<>();
-	      if (isEmail) {
-	    	  queryWrapper.eq(SQLConf.EMAIL,username);
-	      } else if(isMobile){
-	    	  queryWrapper.eq(SQLConf.MOBILE,username);
-	      }else {
-	    	  queryWrapper.eq(SQLConf.USER_NAME,username);
-	      }
-	      Admin admin = adminService.getOne(queryWrapper);
-	      if (admin == null) {
-	          return ResultUtil.result(SysConf.ERROR, "管理员账号不存在");
-	      }
-	      //验证密码
-	      PasswordEncoder encoder = new BCryptPasswordEncoder();
-	      boolean isPassword = encoder.matches(password, admin.getPassWord());
-	      if (!isPassword) {
-	          //密码错误，返回提示
-	          return ResultUtil.result(SysConf.ERROR, "密码错误");
-	      }
-	      //根据admin获取账户拥有的角色uid集合
-	      QueryWrapper<AdminRole> wrapper = new QueryWrapper<>();
-	      wrapper.eq(SQLConf.ADMINUID,admin.getUid());
-	      List<AdminRole> adminRoleList = adminRoleService.list(wrapper);
-	      List<String> roleUids = new ArrayList<>();
-	      for (AdminRole adminRole : adminRoleList) {
+		}
+		Boolean isEmail = CheckUtils.checkEmail(username);
+		Boolean isMobile = CheckUtils.checkMobileNumber(username);
+		QueryWrapper<Admin> queryWrapper = new QueryWrapper<>();
+		if (isEmail) {
+			queryWrapper.eq(SQLConf.EMAIL, username);
+		} else if (isMobile) {
+			queryWrapper.eq(SQLConf.MOBILE, username);
+		} else {
+			queryWrapper.eq(SQLConf.USER_NAME, username);
+		}
+		Admin admin = adminService.getOne(queryWrapper);
+		if (admin == null) {
+			return ResultUtil.result(SysConf.ERROR, "管理员账号不存在");
+		}
+		//验证密码
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		boolean isPassword = encoder.matches(password, admin.getPassWord());
+		if (!isPassword) {
+			//密码错误，返回提示
+			return ResultUtil.result(SysConf.ERROR, "密码错误");
+		}
+		//根据admin获取账户拥有的角色uid集合
+		QueryWrapper<AdminRole> wrapper = new QueryWrapper<>();
+		wrapper.eq(SQLConf.ADMINUID, admin.getUid());
+		List<AdminRole> adminRoleList = adminRoleService.list(wrapper);
+		List<String> roleUids = new ArrayList<>();
+		for (AdminRole adminRole : adminRoleList) {
 			String roleUid = adminRole.getRoleUid();
 			roleUids.add(roleUid);
-	      }
-	      
-	      List<Role> roles = (List<Role>) roleService.listByIds(roleUids);
-	      String roleNames = null;
-	      for (Role role : roles) {
-			roleNames+=(role.getRoleName()+",");
-		  }
-	      String roleName = roleNames.substring(0, roleNames.length()-2);
-	      long expiration = isRememberMe==1 ? longExpiresSecond : audience.getExpiresSecond();
-	      String jwtToken = jwtHelper.createJWT(admin.getUserName(),
-	    		 							   admin.getUid(),
-	    		 							   roleName.toString(),
-	    		 							   audience.getClientId(),
-	    		 							   audience.getName(),
-	    		 							   expiration*1000,
-	    		 							   audience.getBase64Secret());
+		}
+
+		List<Role> roles = (List<Role>) roleService.listByIds(roleUids);
+		String roleNames = null;
+		for (Role role : roles) {
+			roleNames += (role.getRoleName() + ",");
+		}
+		String roleName = roleNames.substring(0, roleNames.length() - 2);
+		long expiration = isRememberMe == 1 ? longExpiresSecond : audience.getExpiresSecond();
+		String jwtToken = jwtHelper.createJWT(admin.getUserName(),
+				admin.getUid(),
+				roleName.toString(),
+				audience.getClientId(),
+				audience.getName(),
+				expiration * 1000,
+				audience.getBase64Secret());
 		String token = tokenHead + jwtToken;
 		Map<String, Object> result = new HashMap<>();
 		result.put(SysConf.TOKEN, token);
-		
+
 		//进行登录相关操作
 		Integer count = admin.getLoginCount() + 1;
 		admin.setLoginCount(count);
 		admin.setLastLoginIp(IpUtils.getIpAddr(request));
 		admin.setLastLoginTime(new Date());
 		admin.updateById();
-		
+
 		return ResultUtil.result(SysConf.SUCCESS, result);
 	}
 	

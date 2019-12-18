@@ -13,7 +13,7 @@ file:
 #    path: D:/mogu_blog/data
   #单个文件的大小M
   size: 50
-  fileBasePath: H:\7-jsdevelop\1-filestore
+  fileBasePath: C:\Users\Administrator\Desktop\tmp
 
 #spring
 spring:
@@ -60,12 +60,12 @@ eureka:
       defaultZone: http://192.168.0.104:8761/cutter-point-eureka/eureka/
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
     metadata-map:
       zone: ABC      # eureka可以理解的元数据
       lilizhou: BBC  # 不会影响客户端行为
     lease-renewal-interval-in-seconds: 5
-    
+    appname: cutter-point-blog-picture
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml

@@ -19,10 +19,11 @@
 
         <el-dropdown class="avatar-container" trigger="click">
           <div class="avatar-wrapper">            
-            <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">            
+            <img :src="avatar" class="user-avatar">            
             <i class="el-icon-caret-bottom"/>            
           </div>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
+            <!-- 这个to的链接失效的，因为server部分的websockjs通信被我注解调了 -->
             <router-link class="inlineBlock" to="/">
               <el-dropdown-item>主页</el-dropdown-item>
             </router-link>
@@ -45,7 +46,7 @@
           </el-collapse-item>
           <el-collapse-item title="2018.12.19 更新" name="2">
             <div>修改Gitee中readme页面</div>
-            <div>项目地址：https://gitee.com/moxi159753/mogu_blog_v2</div>
+            <div>项目地址：https://github.com/cutterpoint/cutter_point_blog</div>
           </el-collapse-item>
           <el-collapse-item title="2018.12.18 更新" name="3">
             <div>重新部署了线上环境</div>
@@ -81,6 +82,7 @@ export default {
     };
   },
   computed: {
+    //this.$store.getters['name'] 这里。。。mapGetters的功能就是类似重store中getters取数据
     ...mapGetters(["sidebar", "avatar"])
   },
   methods: {
