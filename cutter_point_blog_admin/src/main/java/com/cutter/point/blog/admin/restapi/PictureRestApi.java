@@ -101,9 +101,9 @@ public class PictureRestApi {
 		Map<String, String> pictureMap = new HashMap<String, String>();
 		
 		if(fileUids != null) {
-			pictureResult = BlogWebYmlConstrant.imageUrl + "?uid=" + fileUids.toString();
+			pictureResult = fileUids.toString();
 		}
-		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureResult);
+		List<Map<String, Object>> picList = WebUtils.getPictureUrlMap(pictureResult, BlogWebYmlConstrant.imageUrl);
 		
 		picList.forEach(item -> {
 			pictureMap.put(item.get("uid").toString(), item.get("url").toString());

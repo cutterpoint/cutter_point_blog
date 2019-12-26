@@ -112,12 +112,13 @@
       <el-table-column label="标签" width="100">
         <template slot-scope="scope">
           <template>
-            <el-tag
+            <!-- <el-tag
               type="warning"
               v-if="item"
               :key="index"
               v-for="(item, index) in scope.row.tagList"
-            >{{item.content}}</el-tag>
+            >{{item.content}}</el-tag> -->
+            <el-tag type="warning" :key="index" v-for="(item, index) in scope.row.tagList">{{item.content}}</el-tag>
           </template>
         </template>
       </el-table-column>

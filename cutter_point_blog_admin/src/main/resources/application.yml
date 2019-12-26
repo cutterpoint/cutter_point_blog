@@ -52,7 +52,7 @@ spring:
   datasource:
     username: cutter_point
     password: cutter_point
-    url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false
+    url: jdbc:mysql://192.168.0.104:3306/cutter_point?useSSL=false&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     

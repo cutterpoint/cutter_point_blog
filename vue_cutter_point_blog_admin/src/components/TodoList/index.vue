@@ -106,11 +106,11 @@ export default {
     addTodo(e) {
       const text = e.target.value;
       if (text.trim()) {
-        var params = new URLSearchParams();
-        params.append("text", text.trim());
+        var params = {};
+        params.text = text.trim();
 
         addTodo(params).then(response => {
-          console.log("添加事项", response);
+          // console.log("添加事项", response);
           if (response.code == "success") {
             this.getTodoList();
           }

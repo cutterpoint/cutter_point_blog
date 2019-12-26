@@ -15,7 +15,6 @@ import java.util.Date;
 @TableName("t_file_store")
 public class TFileStore extends SuperEntity<TFileStore> {
 
-    private String uid;
     private String fileOldName;
     private String fileName;
     private String fileUrl;
@@ -24,17 +23,6 @@ public class TFileStore extends SuperEntity<TFileStore> {
     private Integer fileSize;
     private String keyName;
     private String keyType;
-    private int status;
-    private Date createTime;
-    private Date updateTime;
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 
     public String getFileOldName() {
         return fileOldName;
@@ -100,27 +88,4 @@ public class TFileStore extends SuperEntity<TFileStore> {
         this.keyType = keyType;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

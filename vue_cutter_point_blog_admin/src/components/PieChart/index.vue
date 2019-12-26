@@ -38,6 +38,8 @@ export default {
   },
 
   mounted() {    
+    //created:html加载完成之前，执行。执行顺序：父组件-子组件
+    // mounted:html加载完成后执行。执行顺序：子组件-父组件
     this.initChart()
     this.__resizeHanlder = debounce(() => {
       if (this.chart) {

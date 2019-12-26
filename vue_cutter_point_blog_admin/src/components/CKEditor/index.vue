@@ -37,7 +37,8 @@ export default {
   },
   mounted() {
     //设置代码块风格为 zenburn
-    CKEDITOR.replace('editor', { height: '275px', width: '100%', toolbar: 'toolbar_Full', codeSnippet_theme: 'zenburn' });
+    // CKEDITOR.replace('editor', { height: '275px', width: '100%', toolbar: 'toolbar_Full', codeSnippet_theme: 'zenburn' });
+    CKEDITOR.replace('editor', { height: '275px', width: '100%', toolbar: 'Full', codeSnippet_theme: 'zenburn' });
     this.editor = CKEDITOR.instances.editor;
     this.editor.setData(this.content); //初始化内容
   },

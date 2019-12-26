@@ -92,9 +92,11 @@
 import { mapGetters } from "vuex";
 import CountTo from "vue-count-to";
 import { init, getVisitByWeek, getBlogCountByTag } from "@/api/index";
+//使用驼峰命名，当使用 PascalCase (驼峰式命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。也就是说 <my-component-name> 和 <MyComponentName> 都是可接受的
 import GithubCorner from "@/components/GithubCorner";
 import PieChart from "@/components/PieChart";
 import TodoList from "@/components/TodoList";
+//暂时没用
 import BarChart from "@/components/BarChart";
 import LineChart from "@/components/LineChart";
 

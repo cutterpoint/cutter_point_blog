@@ -163,9 +163,9 @@ public class BlogRestApi {
 		String pictureList = null;
 		
 		if(fileUids != null) {
-			pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + fileUids.toString();
+			pictureList = fileUids.toString();
 		}
-		List<Map<String, Object>> picList = WebUtils.getPictureMap(pictureList);				
+		List<Map<String, Object>> picList = WebUtils.getPictureUrlMap(pictureList, BlogWebYmlConstrant.imageUrl);
 		Collection<BlogSort> sortList = blogSortService.listByIds(sortUids);		
 		Collection<Tag> tagList = tagService.listByIds(tagUids);
 		
@@ -208,12 +208,12 @@ public class BlogRestApi {
 			if(StringUtils.isNotEmpty(item.getFileUid())) {
 				List<String> pictureUidsTemp = StringUtils.changeStringToString(item.getFileUid(), ",");
 				List<String> pictureListTemp = new ArrayList<String>();
-				
+
 				pictureUidsTemp.forEach(picture -> {
 					pictureListTemp.add(pictureMap.get(picture));
 				});
 				item.setPhotoList(pictureListTemp);
-			}		
+			}
 		}
 		log.info("返回结果");
 		pageList.setRecords(list);

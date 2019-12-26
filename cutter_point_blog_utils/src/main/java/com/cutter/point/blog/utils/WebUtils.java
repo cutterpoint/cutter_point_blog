@@ -1,9 +1,6 @@
 package com.cutter.point.blog.utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.collections.MapUtils;
 import org.springframework.util.StringUtils;
@@ -85,6 +82,26 @@ public class WebUtils {
 				}				
 			}
 		}
+		return resultList;
+	}
+
+	/**
+	 * 获取图片接口路径，返回Map
+	 * @author xiaof
+	 * @date 2019年12月25日23:33:57
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<Map<String, Object>> getPictureUrlMap (String result, String preContext) {
+		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		Map<String, Object> picMap = new HashMap<>();
+
+		Arrays.asList(result.split(",")).forEach((String s) -> {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("url", preContext + "?uid=" + s);
+			map.put("uid", s);
+			resultList.add(map);
+		});
+
 		return resultList;
 	}
 
