@@ -435,10 +435,10 @@ public class BlogRestApi {
 			map.put(SysConf.BLOG_UID, blog.getUid());
 			map.put(SysConf.LEVEL, blog.getLevel());
 			//发送到RabbitMq
-			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
+//			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
 			
 			//当设置下架状态时，删除博客索引
-			blogSearchService.deleteIndex(blog.getUid());
+//			blogSearchService.deleteIndex(blog.getUid());
 		}
 		
 		return ResultUtil.result(SysConf.SUCCESS, "编辑成功");
@@ -464,10 +464,10 @@ public class BlogRestApi {
 			map.put(SysConf.BLOG_UID, blog.getUid());
 			map.put(SysConf.LEVEL, blog.getLevel());
 			//发送到RabbitMq
-			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
+//			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
 			
 			//删除solr索引
-			blogSearchService.deleteIndex(blog.getUid());
+//			blogSearchService.deleteIndex(blog.getUid());
 		}
 		return ResultUtil.result(SysConf.SUCCESS, "删除成功");
 	}

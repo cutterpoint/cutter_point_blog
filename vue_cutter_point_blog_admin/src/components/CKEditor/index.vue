@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">    
+  <div class="app-container">
     <textarea id="editor" rows="10" cols="80"></textarea>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -11,28 +11,28 @@ export default {
   data() {
     return {
       editor: null, //编辑器对象
-      textData: this.content //初始化内容  
-    }    
+      textData: this.content //初始化内容
+    }
   },
   watch: {
-    content: function() {      
-      this.textData = this.content;     
+    content: function() {
+      this.textData = this.content;
     }
   },
   methods: {
-    //获取data 
+    //获取data
     getData: function() {
       return this.editor.getData();
-    }, 
+    },
     setData: function(data) {
       return this.editor.setData(data);
-    }, 
-    initData: function() {      
+    },
+    initData: function() {
       try {
-        this.editor.setData("");  
+        this.editor.setData("");
       } catch (error) {
         console.log("CKEditor还未加载");
-      }             
+      }
     }
   },
   mounted() {
