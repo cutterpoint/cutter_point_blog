@@ -1,6 +1,7 @@
 package com.cutter.point.blog.admin.restapi;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,8 +48,7 @@ public class SystemRestApi {
 	
 	/**
 	 * 获取关于我的信息
-	 * @author xzx19950624@qq.com
-	 * @date 2018年11月6日下午8:57:48
+	 * @date 2020年1月13日22:12:55
 	 */
 	
 	@ApiOperation(value="获取我的信息", notes="获取我的信息")
@@ -65,7 +65,8 @@ public class SystemRestApi {
 		//获取图片
 		if(StringUtils.isNotEmpty(admin.getAvatar())) {
 			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + admin.getAvatar();
-			admin.setPhotoList(WebUtils.getPicture(pictureList));
+			admin.setPhotoList(Arrays.asList(pictureList));
+//			admin.setPhotoList(WebUtils.getPicture(pictureList));
 		}
 		
 		return ResultUtil.result(SysConf.SUCCESS, admin);

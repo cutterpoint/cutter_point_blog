@@ -310,7 +310,7 @@ public class BlogRestApi {
 			map.put(SysConf.BLOG_UID, blog.getUid());
 			map.put(SysConf.LEVEL, blog.getLevel());
 			//发送到RabbitMq
-			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);	
+//			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
 			
 			//获取图片
 			if(StringUtils.isNotEmpty(blog.getFileUid())) {
@@ -320,7 +320,7 @@ public class BlogRestApi {
 			}
 						
 			//增加solr索引
-			blogSearchService.addIndex(blog);
+//			blogSearchService.addIndex(blog);
 		}
 
 		return ResultUtil.result(SysConf.SUCCESS, "添加成功");
@@ -422,10 +422,10 @@ public class BlogRestApi {
 			map.put(SysConf.BLOG_UID, blog.getUid());
 			map.put(SysConf.LEVEL, blog.getLevel());
 			//发送到RabbitMq
-			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
+//			rabbitTemplate.convertAndSend("exchange.direct", "mogu.blog", map);
 			
 			//更新solr索引
-			blogSearchService.updateIndex(blog);
+//			blogSearchService.updateIndex(blog);
 			
 		} else if(isPublish.equals("0")) {
 			

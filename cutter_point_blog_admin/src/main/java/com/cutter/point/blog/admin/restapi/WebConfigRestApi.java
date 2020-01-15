@@ -25,6 +25,8 @@ import com.cutter.point.blog.xo.service.WebConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import java.util.Arrays;
+
 /**
  * <p>
  * 网站配置表 RestApi
@@ -56,14 +58,14 @@ public class WebConfigRestApi {
 		//获取图片
 		if(webConfig !=null && StringUtils.isNotEmpty(webConfig.getLogo())) {
 			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + webConfig.getLogo();
-			webConfig.setPhotoList(WebUtils.getPicture(pictureList));
+			webConfig.setPhotoList(Arrays.asList(pictureList));
 		}
 		
 		//获取支付宝收款二维码
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getAliPay())) {
 			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + webConfig.getAliPay();
 			if(WebUtils.getPicture(pictureList).size() > 0) {
-				webConfig.setAliPayPhoto(WebUtils.getPicture(pictureList).get(0));	
+				webConfig.setAliPayPhoto(pictureList);
 			}
 			
 		}
@@ -71,7 +73,7 @@ public class WebConfigRestApi {
 		if(webConfig != null && StringUtils.isNotEmpty(webConfig.getWeixinPay())) {
 			String pictureList = BlogWebYmlConstrant.imageUrl + "?uid=" + webConfig.getWeixinPay();
 			if(WebUtils.getPicture(pictureList).size() > 0) {
-				webConfig.setWeixinPayPhoto(WebUtils.getPicture(pictureList).get(0));	
+				webConfig.setWeixinPayPhoto(pictureList);
 			}
 			
 		}
